@@ -63,7 +63,7 @@ Generate AI-powered content with quality scoring and optimization.
   "cost_estimate": 0.03,
   "cached": false,
   "recommendations": [
-    "✅ Content quality is excellent!"
+    " Content quality is excellent!"
   ]
 }
 ```

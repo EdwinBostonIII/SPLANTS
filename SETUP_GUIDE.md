@@ -1,4 +1,4 @@
-# 🚀 SPLANTS Marketing Engine - Visual Setup Guide
+#  SPLANTS Marketing Engine - Visual Setup Guide
 
 ## Complete Step-by-Step Guide for Non-Technical Users
 
@@ -6,7 +6,7 @@ This guide walks you through every single step with detailed explanations. Follo
 
 ---
 
-## 📋 Table of Contents
+##  Table of Contents
 
 1. [Before You Begin](#before-you-begin)
 2. [Step 1: Install Docker](#step-1-install-docker)
@@ -33,10 +33,10 @@ This guide walks you through every single step with detailed explanations. Follo
 ### What You'll Learn
 
 By the end of this guide, you'll be able to:
-✅ Run SPLANTS on your computer
-✅ Generate AI content automatically
-✅ Understand how all the pieces work together
-✅ Troubleshoot basic problems
+ Run SPLANTS on your computer
+ Generate AI content automatically
+ Understand how all the pieces work together
+ Troubleshoot basic problems
 
 ---
 
@@ -108,8 +108,8 @@ Docker might ask you to "Install WSL 2"
 
 **Look for the whale icon:**
 - Check your system tray (bottom-right of screen, near the clock)
-- You should see a whale icon 🐳
-- If the whale icon is there, Docker is running! ✅
+- You should see a whale icon 
+- If the whale icon is there, Docker is running! 
 
 **Test in Command Prompt:**
 1. Press `Windows + R`
@@ -120,7 +120,7 @@ Docker might ask you to "Install WSL 2"
    ```
 4. You should see something like: `Docker version 24.0.6, build...`
 
-**✅ Success!** Docker is installed and running!
+** Success!** Docker is installed and running!
 
 ---
 
@@ -133,7 +133,7 @@ Docker might ask you to "Install WSL 2"
 - **Apple Silicon Macs** (M1, M2, M3 - 2020 and newer)
 
 **How to check:**
-1. Click the Apple menu (🍎 top-left)
+1. Click the Apple menu ( top-left)
 2. Click "About This Mac"
 3. Look at the "Chip" or "Processor":
    - If it says "Apple M1" or "Apple M2" → **Apple Silicon**
@@ -180,8 +180,8 @@ Docker might ask you to "Install WSL 2"
 
 **Look for the whale icon:**
 - Check your menu bar (top-right of screen)
-- You should see a whale icon 🐳
-- If it's there, Docker is running! ✅
+- You should see a whale icon 
+- If it's there, Docker is running! 
 
 **Test in Terminal:**
 1. Open **Terminal** (find it in Applications → Utilities)
@@ -191,7 +191,7 @@ Docker might ask you to "Install WSL 2"
    ```
 3. You should see: `Docker version 24.0.6, build...`
 
-**✅ Success!** Docker is installed and running!
+** Success!** Docker is installed and running!
 
 ---
 
@@ -254,7 +254,7 @@ docker-compose --version
 
 You should see version numbers for both.
 
-**✅ Success!** Docker is installed!
+** Success!** Docker is installed!
 
 ---
 
@@ -313,7 +313,7 @@ OpenAI charges for API usage. Don't worry - you control how much you spend!
 3. **Click "Continue"**
 4. **Confirm purchase**
 
-**💡 What you get for $20:**
+** What you get for $20:**
 - About 600-700 blog posts
 - Or 2,000-3,000 social media posts
 - Or mix of different content types
@@ -343,7 +343,7 @@ Protect yourself from unexpected charges:
 
 ### Step 2.6: SAVE YOUR API KEY!
 
-**⚠️ VERY IMPORTANT:**
+** VERY IMPORTANT:**
 
 A window appears with your API key. **This is the ONLY time you'll see it!**
 
@@ -360,7 +360,7 @@ sk-proj-AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCdEfGh
 
 **Your key will be much longer - that's normal!**
 
-**✅ Success!** You now have an OpenAI API key!
+** Success!** You now have an OpenAI API key!
 
 ---
 
@@ -373,7 +373,7 @@ sk-proj-AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCdEfGh
 #### Step 3.1: Go to GitHub
 
 1. Open web browser
-2. Go to: **https://github.com/EdwinBostonIII/SPLANTS**
+2. Go to: **[repository URL]**
 
 #### Step 3.2: Download
 
@@ -435,11 +435,11 @@ If you're comfortable with the command line:
 
 ```bash
 cd ~/Projects  # or your preferred folder
-git clone https://github.com/EdwinBostonIII/SPLANTS.git
+git clone [repository URL].git
 cd SPLANTS
 ```
 
-**✅ Success!** SPLANTS is downloaded!
+** Success!** SPLANTS is downloaded!
 
 ---
 
@@ -546,7 +546,7 @@ OPENAI_API_KEY=sk-your-api-key-here
 OPENAI_API_KEY=sk-proj-AbCdEfGhIjKlMnOpQrStUvWxYz0123456789
 ```
 
-**⚠️ Important:**
+** Important:**
 - Paste your ENTIRE key
 - No spaces before or after
 - No quotes around it
@@ -655,13 +655,13 @@ DAILY_API_LIMIT=0
 
 **Double-check these important points:**
 
-✅ File is named exactly `.env` (not `.env.txt` or `.env.example`)
-✅ OPENAI_API_KEY starts with `sk-` or `sk-proj-`
-✅ API_KEY is changed from the default
-✅ No extra spaces or quote marks
-✅ File is saved
+ File is named exactly `.env` (not `.env.txt` or `.env.example`)
+ OPENAI_API_KEY starts with `sk-` or `sk-proj-`
+ API_KEY is changed from the default
+ No extra spaces or quote marks
+ File is saved
 
-**✅ Success!** Configuration is complete!
+** Success!** Configuration is complete!
 
 ---
 
@@ -791,7 +791,7 @@ splants_db_1     docker-entrypoint.sh postgres  Up      5432/tcp
 - Check again
 - See troubleshooting section if problems persist
 
-**✅ Success!** System is running!
+** Success!** System is running!
 
 ---
 
@@ -814,7 +814,7 @@ A JSON response with system information like:
 }
 ```
 
-**If you see this = SUCCESS! ✅**
+**If you see this = SUCCESS! **
 
 **If browser shows "can't reach page":**
 - Wait another 30 seconds and refresh
@@ -843,9 +843,9 @@ A JSON response with system information like:
 ```
 
 **Check these points:**
-✅ `status`: "healthy"
-✅ `database`: "connected"
-✅ `openai`: "configured" (or "not_configured" if key wrong)
+ `status`: "healthy"
+ `database`: "connected"
+ `openai`: "configured" (or "not_configured" if key wrong)
 
 ---
 
@@ -887,25 +887,25 @@ SPLANTS Marketing Engine - API Test Suite
 
 Testing: Root Endpoint
   Endpoint: GET /
-  ✅ Success (Status: 200)
+   Success (Status: 200)
 
 Testing: Health Check
   Endpoint: GET /health
-  ✅ Success (Status: 200)
+   Success (Status: 200)
 
 Testing: Generate Blog Content
   Endpoint: POST /v1/generate
-  ✅ Success (Status: 200)
+   Success (Status: 200)
 
 ...
 
 TEST SUMMARY
 ================================================
 Tests Passed: 10/10
-✅ All tests passed!
+ All tests passed!
 ```
 
-**If all tests pass = EVERYTHING WORKS! 🎉**
+**If all tests pass = EVERYTHING WORKS! **
 
 ---
 
@@ -992,12 +992,12 @@ You'll see something like:
   "cost_estimate": 0.03,
   "cached": false,
   "recommendations": [
-    "✅ Content quality is excellent! No improvements needed."
+    " Content quality is excellent! No improvements needed."
   ]
 }
 ```
 
-**🎉 Congratulations!** You just generated your first AI content!
+** Complete.** You just generated your first AI content!
 
 #### Step 7.6: Understanding the Results
 
@@ -1040,7 +1040,7 @@ You'll see something like:
 ```json
 {
   "content_type": "social_post",
-  "topic": "Just launched our new AI-powered marketing automation tool! 🚀 Helping small businesses save 10+ hours per week.",
+  "topic": "Just launched our new AI-powered marketing automation tool!  Helping small businesses save 10+ hours per week.",
   "keywords": ["AI", "marketing", "automation"],
   "tone": "enthusiastic",
   "platform": "twitter",
@@ -1088,7 +1088,7 @@ You'll see something like:
 
 ## What to Do Next
 
-### 🎯 Your Next Steps
+###  Your Next Steps
 
 Now that everything works, here's what to do:
 
@@ -1118,7 +1118,7 @@ Monitor your spending!
 
 ---
 
-### 2. Generate More Content 📝
+### 2. Generate More Content 
 
 Try creating:
 - [ ] A blog post for your business
@@ -1131,7 +1131,7 @@ Try creating:
 
 ---
 
-### 3. Understand Your Results 📊
+### 3. Understand Your Results 
 
 Each time you generate content, check:
 - **Quality Score**: Aim for 0.7+ (70%+)
@@ -1159,11 +1159,13 @@ Each time you generate content, check:
 
 ---
 
-### 5. Optimize Costs 💰
+### 5. Optimize Costs
 
-**Want to save 30-50% on costs?**
+**Cost Optimization Through Redis Caching:**
 
-**Enable Redis Caching:**
+Redis caching can reduce operational costs by 30-50%.
+
+**Implementation Steps:**
 
 1. Edit `docker-compose.yml`
 2. Uncomment the Redis section (remove `#`)
@@ -1177,26 +1179,26 @@ Each time you generate content, check:
    docker-compose up -d
    ```
 
-**This caches frequently requested content and dramatically reduces costs!**
+This configuration caches frequently requested content to reduce API costs.
 
 ---
 
-### 6. Deploy to a Server 🌐
+### 6. Deploy to a Server
 
-**Want to access from anywhere?**
+**Remote Access Configuration:**
 
-**Right now:** Only works on your computer (localhost)
-**Goal:** Access from anywhere with internet
+Current configuration: Local access only (localhost)
+Alternative configuration: Remote access via server deployment
 
-**See our deployment guide:**
-- Read `docs_DEPLOYMENT.md`
-- Deploy to DigitalOcean, Linode, or AWS
-- Cost: $10-15/month for server
-- Benefit: Access 24/7 from anywhere
+**Deployment Information:**
+- Review `docs_DEPLOYMENT.md` for complete instructions
+- Supported platforms: DigitalOcean, Linode, AWS
+- Estimated cost: $10-15/month for server infrastructure
+- Provides 24/7 availability and remote access
 
 ---
 
-### 7. Backup Your Content 💾
+### 7. Backup Your Content 
 
 **Protect your generated content:**
 
@@ -1225,24 +1227,22 @@ Each time you generate content, check:
 
 ---
 
-## 🎉 You Did It!
+## Setup Complete
 
-### What You've Accomplished
+### Completed Steps
 
-✅ Installed Docker
-✅ Set up OpenAI API access
-✅ Downloaded and configured SPLANTS
-✅ Started the system successfully
-✅ Generated your first AI content
-✅ Learned how to use the web interface
-
-**This is a huge achievement!** Especially if you're not technical.
+- Installed Docker
+- Configured OpenAI API access
+- Downloaded and configured SPLANTS
+- Started the system
+- Generated initial AI content
+- Configured web interface access
 
 ---
 
 ### Quick Reference
 
-**Important URLs:**
+**System URLs:**
 ```
 Main API: http://localhost:8080
 API Docs: http://localhost:8080/docs
@@ -1250,7 +1250,7 @@ Health Check: http://localhost:8080/health
 System Status: http://localhost:8080/v1/system/status
 ```
 
-**Important Commands:**
+**System Commands:**
 ```bash
 # Start system
 docker-compose up -d
@@ -1271,38 +1271,27 @@ python test_api.py
 ./scripts_backup.sh
 ```
 
-**Important Files:**
+**Configuration Files:**
 ```
-.env - Your configuration (KEEP SAFE!)
+.env - System configuration (secure storage required)
 docker-compose.yml - Service definitions
 main.py - Application code
-README.md - Full documentation
+README.md - Complete documentation
 ```
 
 ---
 
-### Need Help?
+### Troubleshooting
 
-**If something doesn't work:**
+**System Issues:**
 
-1. **Check the troubleshooting section** in README.md
-2. **View logs**: `docker-compose logs -f app`
-3. **Restart**: `docker-compose restart`
-4. **Ask for help**: [Open GitHub issue](https://github.com/EdwinBostonIII/SPLANTS/issues)
-
----
-
-### Share Your Success! 🎊
-
-If this guide helped you, consider:
-- ⭐ Star the project on GitHub
-- 📢 Share with other small business owners
-- 💬 Leave feedback to help us improve
+1. Review troubleshooting section in README.md
+2. View logs: `docker-compose logs -f app`
+3. Restart system: `docker-compose restart`
+4. Check documentation at [repository URL]
 
 ---
 
-**Welcome to the world of AI-powered marketing automation!**
+The SPLANTS Marketing Engine is now operational and ready for content generation.
 
-**You now have a tool that costs $35-80/month but provides value equivalent to a $2,000-10,000/month marketing team.**
-
-**Happy marketing! 🚀**
+** **
