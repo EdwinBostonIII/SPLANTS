@@ -30,7 +30,6 @@
 The SPLANTS Marketing Engine is an AI-powered content generation system designed specifically for the SPLANTS brand. This system automates the creation of marketing content for custom paint-splatter pants with Jackson Pollock-inspired patterns.
 
 The engine provides:
-
 - AI-generated marketing content using GPT-4 technology
 - Automated blog posts, social media content, emails, and advertisements
 - Search engine optimization (SEO) for improved online visibility
@@ -40,7 +39,6 @@ The engine provides:
 ### Comparison
 
 **Traditional Approach:**
-
 - Freelance writer: $200 per blog post
 - Delivery time: 3-5 days
 - Social media content: $150 additional
@@ -48,7 +46,6 @@ The engine provides:
 - Total monthly cost: $650+
 
 **SPLANTS Marketing Engine:**
-
 - Unlimited content generation
 - Instant delivery (30 seconds per piece)
 - Integrated SEO optimization
@@ -56,78 +53,77 @@ The engine provides:
 
 ---
 
+ **Small Business Owners** who need marketing but can't afford an agency
 ## What You Get
 
 ### Core Features (Included)
 
 | Feature | What It Does | Value |
 |---------|-------------|-------|
-| **AI Content Generation**| Creates blog posts, social media content, emails, ads, and more using GPT-4 | Worth $500-2,000/month if hired |
-|**SEO Optimization**| Makes your content rank better on Google | Worth $300-1,000/month |
-|**Quality Scoring**| Rates each piece of content so you know it's good | Worth $200/month |
-|**Multi-Platform Publishing**| Post to Twitter, LinkedIn, Instagram, Facebook, and more | Worth $500/month |
-|**Storage & Management**| Keeps all your content organized in a database | Worth $50/month |
+| **AI Content Generation** | Creates blog posts, social media content, emails, ads, and more using GPT-4 | Worth $500-2,000/month if hired |
+| **SEO Optimization** | Makes your content rank better on Google | Worth $300-1,000/month |
+| **Quality Scoring** | Rates each piece of content so you know it's good | Worth $200/month |
+| **Multi-Platform Publishing** | Post to Twitter, LinkedIn, Instagram, Facebook, and more | Worth $500/month |
+| **Storage & Management** | Keeps all your content organized in a database | Worth $50/month |
 
 ### FREE Bonus Features (No Extra Cost)
 
 | Feature | What It Does | How It Helps You |
 |---------|-------------|------------------|
-|**Analytics Dashboard**| Shows what content works best | Make smarter marketing decisions |
-|**A/B Testing**| Creates multiple versions to test which performs better | Increase engagement by 20-30% |
-|**Content Templates**| Pre-made structures for proven content types | Save 2-3 hours per piece |
-|**Cost Control**| Monitors spending and prevents budget overruns | Never get surprised by bills |
-|**Webhooks**| Connect to Zapier for automation | Integrate with 5,000+ apps |
-|**Smart Hashtags**| Auto-generates relevant hashtags | Better social media reach |
-|**Platform Optimization**| Adjusts content for each platform automatically | Content performs better |
+| ** Analytics Dashboard** | Shows what content works best | Make smarter marketing decisions |
+| ** A/B Testing** | Creates multiple versions to test which performs better | Increase engagement by 20-30% |
+| ** Content Templates** | Pre-made structures for proven content types | Save 2-3 hours per piece |
+| ** Cost Control** | Monitors spending and prevents budget overruns | Never get surprised by bills |
+| ** Webhooks** | Connect to Zapier for automation | Integrate with 5,000+ apps |
+| ** Smart Hashtags** | Auto-generates relevant hashtags | Better social media reach |
+| ** Platform Optimization** | Adjusts content for each platform automatically | Content performs better |
 
 ### Optional Premium Features
 
 | Feature | Extra Cost | What You Get |
 |---------|-----------|--------------|
-|**Redis Caching**| +$10-15/month | Reduces AI costs by 30-50% |
-|**Multi-Model AI**| +$0.02-0.05 per request | 20-30% higher quality using GPT-4 + Claude |
-|**Auto-Publishing**| Free-$30/month | Actually posts to social media for you |
+| **Redis Caching** | +$10-15/month | Reduces AI costs by 30-50% |
+| **Multi-Model AI** | +$0.02-0.05 per request | 20-30% higher quality using GPT-4 + Claude |
+| **Auto-Publishing** | Free-$30/month | Actually posts to social media for you |
 
 ---
 
-## How Much Does It Cost?
+##  How Much Does It Cost?
 
 ### Monthly Cost Breakdown
 
 | Item | Cost | What It's For |
 |------|------|---------------|
-|**Server (Computer to run it on)**| $5-15/month | Keeps the system running 24/7 |
-|**Database (Storage for content)**| $5-10/month | Stores all your content |
-|**AI Usage (GPT-4 costs)**| $15-50/month | Creating the actual content |
-|**Optional: Redis Cache**| $10-15/month | Makes it 30-50% cheaper to run |
-|**TOTAL**|**$35-80/month**| Complete marketing system |
+| **Server (Computer to run it on)** | $5-15/month | Keeps the system running 24/7 |
+| **Database (Storage for content)** | $5-10/month | Stores all your content |
+| **AI Usage (GPT-4 costs)** | $15-50/month | Creating the actual content |
+| **Optional: Redis Cache** | $10-15/month | Makes it 30-50% cheaper to run |
+| **TOTAL** | **$35-80/month** | Complete marketing system |
 
 ### Cost Comparison
 
 | Solution | Monthly Cost | What You Get |
 |----------|-------------|--------------|
-|**SPLANTS**| $35-80 | Unlimited content, all features |
-|**Hiring a Writer**| $500-2,000 | 5-20 articles only |
-|**Marketing Agency**| $2,000-10,000 | Full service (if you can afford it) |
-|**HubSpot**| $800-3,200 | Marketing automation platform |
-|**Jasper.ai** | $49-125 | AI writing only (no publishing, analytics) |
+| **SPLANTS** | $35-80 | Unlimited content, all features |
+| **Hiring a Writer** | $500-2,000 | 5-20 articles only |
+| **Marketing Agency** | $2,000-10,000 | Full service (if you can afford it) |
+| **HubSpot** | $800-3,200 | Marketing automation platform |
+| **Jasper.ai** | $49-125 | AI writing only (no publishing, analytics) |
 
-**Bottom Line:**SPLANTS saves you 90-95% compared to traditional solutions!
+** Bottom Line:** SPLANTS saves you 90-95% compared to traditional solutions!
 
 ---
 
-## What You Need
+##  What You Need
 
 ### 1. A Computer
 
 You can use:
-
--**Windows**(Windows 10 or newer)
--**Mac**(macOS 10.14 or newer)
--**Linux** (Ubuntu, Debian, etc.)
+- **Windows** (Windows 10 or newer)
+- **Mac** (macOS 10.14 or newer)
+- **Linux** (Ubuntu, Debian, etc.)
 
 **Minimum Requirements:**
-
 - 4GB RAM (memory)
 - 20GB free disk space
 - Internet connection
@@ -135,7 +131,6 @@ You can use:
 ### 2. Three Free Accounts
 
 #### A. Docker Account (Free)
-
 **What is Docker?** Think of it as a "shipping container" for software. It packages everything the program needs to run.
 
 **Where to get it:** [docker.com](https://docker.com)
@@ -143,7 +138,6 @@ You can use:
 **Time to setup:** 5 minutes
 
 #### B. OpenAI Account (Paid but cheap)
-
 **What is OpenAI?** The company that makes GPT-4, the AI that creates your content.
 
 **Where to get it:** [platform.openai.com](https://platform.openai.com)
@@ -151,26 +145,24 @@ You can use:
 **Time to setup:** 5 minutes
 
 #### C. A Text Editor (Free)
-
 **What is it?** A program to edit configuration files.
 
 **Recommendations:**
-
-- **Windows:**Notepad (built-in) or [Notepad++](https://notepad-plus-plus.org/)
--**Mac:**TextEdit (built-in) or [VS Code](https://code.visualstudio.com/)
--**Linux:**nano (built-in) or gedit
+- **Windows:** Notepad (built-in) or [Notepad++](https://notepad-plus-plus.org/)
+- **Mac:** TextEdit (built-in) or [VS Code](https://code.visualstudio.com/)
+- **Linux:** nano (built-in) or gedit
 
 ---
 
-## Installation Guide (Step-by-Step)
+##  Installation Guide (Step-by-Step)
 
 ### Step 1: Install Docker (The "Container" for the Software)
 
 Docker is a tool that runs the software in an isolated environment. You only need to install it once.
 
-#### For Windows
+#### For Windows:
 
-1.**Download Docker Desktop:**
+1. **Download Docker Desktop:**
    - Go to [docker.com/get-started](https://docker.com/get-started)
    - Click "Download for Windows"
    - File size: ~500MB (may take 5-10 minutes to download)
@@ -182,13 +174,13 @@ Docker is a tool that runs the software in an isolated environment. You only nee
 
 3. **Verify It's Working:**
    - Look for a whale icon in your system tray (bottom-right corner)
-   - If you see it, Docker is running!
+   - If you see it, Docker is running! 
 
-**Troubleshooting:**If Docker doesn't start, you may need to enable virtualization in your BIOS.
+**Troubleshooting:** If Docker doesn't start, you may need to enable virtualization in your BIOS. [See detailed guide here](#troubleshooting-docker-wont-start-on-windows)
 
-#### For Mac
+#### For Mac:
 
-1.**Download Docker Desktop:**
+1. **Download Docker Desktop:**
    - Go to [docker.com/get-started](https://docker.com/get-started)
    - Click "Download for Mac"
    - Choose "Mac with Intel chip" or "Mac with Apple chip" (M1/M2)
@@ -200,13 +192,13 @@ Docker is a tool that runs the software in an isolated environment. You only nee
 
 3. **Verify It's Working:**
    - Look for a whale icon in your menu bar (top-right)
-   - If you see it, Docker is running!
+   - If you see it, Docker is running! 
 
-#### For Linux (Ubuntu/Debian)
+#### For Linux (Ubuntu/Debian):
 
-1. **Open Terminal**(Press `Ctrl + Alt + T`)
+1. **Open Terminal** (Press `Ctrl + Alt + T`)
 
-2.**Run These Commands**(copy and paste one at a time):
+2. **Run These Commands** (copy and paste one at a time):
 
 ```bash
 # Download Docker installation script
@@ -220,20 +212,14 @@ sudo usermod -aG docker $USER
 
 # Install Docker Compose
 sudo apt install docker-compose -y
-
-```text
 ```
 
-3.**Restart Your Computer**
+3. **Restart Your Computer**
 
 4. **Verify It's Working:**
-
 ```bash
 docker --version
-
-```text
 ```
-
 You should see something like "Docker version 24.0.6"
 
 ---
@@ -242,11 +228,11 @@ You should see something like "Docker version 24.0.6"
 
 OpenAI is the company that provides the AI (GPT-4) that creates your content.
 
-**Think of the API key like a password**that lets this program use OpenAI's AI.
+**Think of the API key like a password** that lets this program use OpenAI's AI.
 
-#### Detailed Steps
+#### Detailed Steps:
 
-1.**Create an OpenAI Account:**
+1. **Create an OpenAI Account:**
    - Go to [platform.openai.com/signup](https://platform.openai.com/signup)
    - Sign up with your email
    - Verify your email address
@@ -255,9 +241,9 @@ OpenAI is the company that provides the AI (GPT-4) that creates your content.
    - Go to [platform.openai.com/account/billing](https://platform.openai.com/account/billing)
    - Click "Add payment method"
    - Add a credit card
-   - **Add $20 credit**(this will generate ~600-700 pieces of content)
+   - **Add $20 credit** (this will generate ~600-700 pieces of content)
 
-3.**Create an API Key:**
+3. **Create an API Key:**
    - Go to [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
    - Click "Create new secret key"
    - **IMPORTANT:** Copy the key immediately! It starts with `sk-`
@@ -275,22 +261,19 @@ You need to get the software files onto your computer.
 
 #### Option A: Using Git (Recommended)
 
-**What is Git?**A tool for downloading and managing code.
+**What is Git?** A tool for downloading and managing code.
 
-1.**Install Git:**
-   - **Windows:**Download from [git-scm.com](https://git-scm.com)
-   -**Mac:**Open Terminal and type `git --version` (it will install automatically)
-   -**Linux:**`sudo apt install git`
+1. **Install Git:**
+   - **Windows:** Download from [git-scm.com](https://git-scm.com)
+   - **Mac:** Open Terminal and type `git --version` (it will install automatically)
+   - **Linux:** `sudo apt install git`
 
-2.**Download SPLANTS:**
-
+2. **Download SPLANTS:**
 ```bash
 # Open Terminal (Mac/Linux) or Command Prompt (Windows)
 cd Desktop
 git clone [repository URL].git
 cd SPLANTS
-
-```text
 ```
 
 #### Option B: Download ZIP (Easier)
@@ -303,23 +286,21 @@ cd SPLANTS
 
 ---
 
-## First-Time Setup
+##  First-Time Setup
 
-The SPLANTS Marketing Engine now includes an **interactive setup wizard**that guides you through the entire configuration process. No need to manually edit files!
+The SPLANTS Marketing Engine now includes an **interactive setup wizard** that guides you through the entire configuration process. No need to manually edit files!
 
 ### Quick Start (Recommended)
 
-1.**Open Terminal/Command Prompt**in the SPLANTS folder:
-   -**Windows:**Right-click in the folder → "Open in Terminal" or "Open Command Prompt here"
-   -**Mac:**Right-click folder → Services → "New Terminal at Folder"
-   -**Linux:**Right-click → "Open in Terminal"
+1. **Open Terminal/Command Prompt** in the SPLANTS folder:
+   - **Windows:** Right-click in the folder → "Open in Terminal" or "Open Command Prompt here"
+   - **Mac:** Right-click folder → Services → "New Terminal at Folder"
+   - **Linux:** Right-click → "Open in Terminal"
 
-2.**Run the setup wizard:**
+2. **Run the setup wizard:**
 
 ```bash
 make start
-
-```text
 ```
 
 That's it! The wizard will:
@@ -334,20 +315,15 @@ That's it! The wizard will:
 3. **Access the system:**
 
 Open your web browser and go to:
-
-```text
 ```
-
 http://localhost:3000
-
-```text
 ```
 
-**You should see:**The SPLANTS Marketing Engine web interface!
+**You should see:** The SPLANTS Marketing Engine web interface! 
 
 ---
 
-## Verify Your Installation
+##  Verify Your Installation
 
 After setup, verify everything is working correctly.
 
@@ -361,8 +337,6 @@ Before installing, verify your system meets all requirements:
 
 ```bash
 ./scripts_check-system.sh
-
-```text
 ```
 
 This checks:
@@ -379,8 +353,6 @@ After setup, verify the installation is working:
 
 ```bash
 ./scripts_verify-installation.sh
-
-```text
 ```
 
 This validates:
@@ -397,20 +369,14 @@ Both scripts provide clear pass/fail feedback and actionable remediation steps.
 
 If you prefer to verify manually:
 
-1.**Check services are running:**
-
+1. **Check services are running:**
    ```bash
    make status
-
-   ```
    ```
 
 2. **Test the API:**
-
    ```bash
    make test
-
-   ```
    ```
 
 3. **Access the web interface:**
@@ -426,36 +392,29 @@ If you prefer to configure manually or the wizard doesn't work:
 
    ```bash
    cp .env.example .env
-
-   ```
    ```
 
-2. **Edit the `.env` file**and add:
+2. **Edit the `.env` file** and add:
    - Your OpenAI API key (from https://platform.openai.com/api-keys)
    - A secure system API key (at least 12 characters)
    - Your monthly budget (optional, recommended: $50)
 
-3.**Start the system:**
+3. **Start the system:**
 
    ```bash
    make start
-
-   ```
    ```
    
    Or directly with Docker Compose:
-
    ```bash
    docker compose up -d   # Modern Docker Desktop (v2.x)
    # OR
    docker-compose up -d   # Older standalone version
-
-   ```
    ```
 
 ---
 
-## Managing the System
+##  Managing the System
 
 The Makefile provides simple commands for all operations:
 
@@ -468,8 +427,6 @@ make restart   # Restart all services
 make logs      # View application logs (live)
 make status    # Check service status
 make test      # Run API tests to verify everything works
-
-```text
 ```
 
 ### Maintenance Commands
@@ -479,8 +436,6 @@ make backup              # Backup database
 make restore file=<file> # Restore database from backup
 make update              # Pull latest changes and rebuild
 make clean               # Remove all data (WARNING: deletes everything!)
-
-```text
 ```
 
 ### Development Commands
@@ -490,8 +445,6 @@ make dev       # Start in development mode (with logs)
 make build     # Build Docker images
 make rebuild   # Rebuild Docker images (no cache)
 make monitor   # Monitor resource usage
-
-```text
 ```
 
 ### Troubleshooting
@@ -499,29 +452,20 @@ make monitor   # Monitor resource usage
 If something isn't working:
 
 1. **Run the test suite:**
-
    ```bash
    make test
-
-   ```
    ```
    
    This validates the API contract between backend and frontend. If tests pass, the problem is likely in the frontend. If they fail, it's in the backend.
 
 2. **Check the logs:**
-
    ```bash
    make logs
-
-   ```
    ```
 
 3. **Verify services are running:**
-
    ```bash
    make status
-
-   ```
    ```
 
 4. **See detailed troubleshooting:**
@@ -530,35 +474,30 @@ If something isn't working:
 
 ---
 
-## How to Use It
+##  How to Use It
 
 ### Method 1: Using the Interactive Web Interface (Easiest)
 
 1. **Open the API Documentation:**
-
    ```
-   ```
-
    http://localhost:3000/api/docs
-
-   ```
    ```
 
-2. **You'll see a beautiful interface**with all available features
+2. **You'll see a beautiful interface** with all available features
 
-3.**To generate content:**
+3. **To generate content:**
    - Find "POST /v1/generate" in the list
    - Click on it to expand
    - Click "Try it out"
    - Fill in the form:
-     - **content_type:**Select "blog"
-     -**topic:**"5 Ways AI Helps Small Businesses"
-     -**keywords:**["AI", "small business", "automation"]
-     -**tone:**"professional"
-     -**length:**800
+     - **content_type:** Select "blog"
+     - **topic:** "5 Ways AI Helps Small Businesses"
+     - **keywords:** ["AI", "small business", "automation"]
+     - **tone:** "professional"
+     - **length:** 800
    - Click "Execute"
 
-4.**See your generated content!** It appears in the "Response body" section
+4. **See your generated content!** It appears in the "Response body" section
 
 ### Method 2: Using the Test Script
 
@@ -566,8 +505,6 @@ We've included a test script that generates several types of content:
 
 ```bash
 python test_api.py
-
-```text
 ```
 
 This will:
@@ -579,7 +516,6 @@ This will:
 ### Method 3: Using Your Own Code (For Developers)
 
 **Python Example:**
-
 ```python
 import requests
 
@@ -607,12 +543,9 @@ response = requests.post(
 content = response.json()
 print(f"Quality Score: {content['quality_score']}")
 print(f"Content: {content['content']}")
-
-```text
 ```
 
 **JavaScript Example:**
-
 ```javascript
 const axios = require('axios');
 
@@ -642,17 +575,15 @@ async function generateContent() {
 }
 
 generateContent();
-
-```text
 ```
 
 ---
 
-## Understanding The Tools
+##  Understanding The Tools
 
 ### What Each Tool Does (Simple Explanations)
 
-#### Docker
+#### Docker 
 **What it is:** A way to package and run software in isolated "containers"
 
 **Why you need it:** Makes sure the software runs the same way on every computer
@@ -685,7 +616,7 @@ generateContent();
 
 ---
 
-#### OpenAI GPT-4
+#### OpenAI GPT-4 
 **What it is:** The actual AI that writes content
 
 **Why you need it:** This is the "brain" that generates marketing content
@@ -696,7 +627,7 @@ generateContent();
 
 ---
 
-#### Redis (Optional)
+#### Redis (Optional) 
 **What it is:** A super-fast cache (temporary storage)
 
 **Why you might want it:** Reduces costs by 30-50% by remembering similar requests
@@ -709,9 +640,7 @@ generateContent();
 
 ### How They Work Together
 
-```text
 ```
-
 You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
                           ↓
                       Content Created
@@ -719,20 +648,18 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
                     [Stored & Analyzed]
                           ↓
                      [Shows Results]
-
-```text
 ```
 
 **Simple Flow:**
-1. **You**open the web browser and request content
-2.**FastAPI**receives your request
-3.**GPT-4 AI**generates the content
-4.**PostgreSQL**stores the content
-5.**You** see the results!
+1. **You** open the web browser and request content
+2. **FastAPI** receives your request
+3. **GPT-4 AI** generates the content
+4. **PostgreSQL** stores the content
+5. **You** see the results!
 
 ---
 
-## Common Tasks
+##  Common Tasks
 
 ### Task 1: Generate a Blog Post
 
@@ -743,7 +670,6 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 2. Find "POST /v1/generate"
 3. Click "Try it out"
 4. Enter:
-
    ```json
    {
      "content_type": "blog",
@@ -753,10 +679,7 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
      "length": 800,
      "seo_optimize": true
    }
-
    ```
-   ```
-
 5. Click "Execute"
 6. Copy your blog post from the response!
 
@@ -772,7 +695,6 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 **Steps:**
 1. Go to the API documentation
 2. Generate Twitter post:
-
    ```json
    {
      "content_type": "social_post",
@@ -781,12 +703,8 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
      "tone": "enthusiastic",
      "include_hashtags": true
    }
-
    ```
-   ```
-
 3. Generate LinkedIn post:
-
    ```json
    {
      "content_type": "social_post",
@@ -795,8 +713,6 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
      "tone": "professional",
      "include_hashtags": true
    }
-
-   ```
    ```
 
 **Time:** 1 minute for both
@@ -858,7 +774,6 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 3. Generate from template:
    - Find "POST /v1/templates/generate"
    - Enter:
-
    ```json
    {
      "template_id": "blog_listicle",
@@ -869,8 +784,6 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
      },
      "use_ai": true
    }
-
-   ```
    ```
 
 ---
@@ -881,7 +794,6 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 
 **Steps:**
 1. Generate variants:
-
    ```json
    {
      "content_type": "email",
@@ -889,8 +801,6 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
      "tone": "friendly",
      "generate_variants": true
    }
-
-   ```
    ```
 
 2. Get the `content_id` from the response
@@ -922,16 +832,16 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 2. **Scroll to "Webhook Integration" section**
 
 3. **Get a webhook URL from your automation service:**
-   - **Zapier:**Create a new Zap → Add "Webhooks by Zapier" trigger → Copy the URL
-   -**Make:**Add "Webhooks" module → Copy the webhook URL
-   -**IFTTT:**Create a new applet → Add "Webhooks" trigger → Copy the URL
+   - **Zapier:** Create a new Zap → Add "Webhooks by Zapier" trigger → Copy the URL
+   - **Make:** Add "Webhooks" module → Copy the webhook URL
+   - **IFTTT:** Create a new applet → Add "Webhooks" trigger → Copy the URL
 
-4.**Paste the URL into SPLANTS:**
-   - **Content Generated Webhook:**Triggered every time new content is created
-   -**Content Published Webhook:**Triggered when content is published to a platform
-   -**Daily Report Webhook:**Triggered once per day with usage summary
+4. **Paste the URL into SPLANTS:**
+   - **Content Generated Webhook:** Triggered every time new content is created
+   - **Content Published Webhook:** Triggered when content is published to a platform
+   - **Daily Report Webhook:** Triggered once per day with usage summary
 
-5.**Click "Save Webhook Settings"**
+5. **Click "Save Webhook Settings"**
 
 **Example Automations:**
 - 📧 Send email notification when content is generated
@@ -950,8 +860,6 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 
 ```bash
 make stop
-
-```text
 ```
 
 **This will:**
@@ -967,8 +875,6 @@ make stop
 
 ```bash
 make start
-
-```text
 ```
 
 **This will:**
@@ -984,8 +890,6 @@ make start
 
 ```bash
 make backup
-
-```text
 ```
 
 **This creates a compressed backup in the `backups/` folder**
@@ -998,13 +902,11 @@ make backup
 
 ```bash
 make restore file=backups/splants_backup_20240101_120000.sql.gz
-
-```text
 ```
 
 ---
 
-## Troubleshooting
+##  Troubleshooting
 
 ### Problem: "Docker is not running"
 
@@ -1029,12 +931,9 @@ make restore file=backups/splants_backup_20240101_120000.sql.gz
 5. Try again
 
 **Linux:**
-
 ```bash
 sudo systemctl start docker
 sudo systemctl enable docker
-
-```text
 ```
 
 ---
@@ -1048,38 +947,26 @@ sudo systemctl enable docker
 **Solution:**
 
 1. **Check if containers are running:**
-
 ```bash
 docker-compose ps
-
-```text
 ```
 
 2. **If nothing is running, start it:**
-
 ```bash
 docker-compose up -d
-
-```text
 ```
 
 3. **Wait 60 seconds, then check:**
-
 ```bash
 docker-compose logs app
-
-```text
 ```
 
-4. **Look for:**"SPLANTS Marketing Engine Ready!"
+4. **Look for:** "SPLANTS Marketing Engine Ready!"
 
-5.**If you see errors, try:**
-
+5. **If you see errors, try:**
 ```bash
 docker-compose down
 docker-compose up -d
-
-```text
 ```
 
 ---
@@ -1093,21 +980,15 @@ docker-compose up -d
 **Solution:**
 
 1. **Check your `.env` file:**
-
 ```bash
 cat .env | grep API_KEY
-
-```text
 ```
 
 2. **Make sure `API_KEY` is set correctly**
 
 3. **Restart the system:**
-
 ```bash
 docker-compose restart app
-
-```text
 ```
 
 4. **Make sure you're using the same key in your requests:**
@@ -1139,11 +1020,8 @@ docker-compose restart app
 - Consider upgrading your OpenAI plan
 
 **Check API key:**
-
 ```bash
 cat .env | grep OPENAI_API_KEY
-
-```text
 ```
 
 ---
@@ -1157,36 +1035,24 @@ cat .env | grep OPENAI_API_KEY
 **Solution:**
 
 1. **Check if database is running:**
-
 ```bash
 docker-compose ps db
-
-```text
 ```
 
 2. **If it's not running:**
-
 ```bash
 docker-compose up -d db
-
-```text
 ```
 
 3. **Wait 30 seconds, then start the app:**
-
 ```bash
 docker-compose up -d app
-
-```text
 ```
 
 4. **If still failing, reset the database:**
-
 ```bash
 docker-compose down -v
 docker-compose up -d
-
-```text
 ```
 
  **WARNING:** `-v` deletes all data. Backup first if needed!
@@ -1202,34 +1068,25 @@ docker-compose up -d
 **Solutions:**
 
 1. **Set a monthly budget in `.env`:**
-
 ```env
 MONTHLY_AI_BUDGET=50
-
-```text
 ```
 
 2. **Set daily limits:**
-
 ```env
 DAILY_API_LIMIT=100
-
-```text
 ```
 
-3. **Enable Redis caching**(reduces costs by 30-50%):
+3. **Enable Redis caching** (reduces costs by 30-50%):
    - Uncomment Redis in `docker-compose.yml`
    - Add to `.env`: `REDIS_URL=redis://redis:6379`
    - Restart: `docker-compose down && docker-compose up -d`
 
-4.**Use shorter content:**
-
+4. **Use shorter content:**
 ```json
 {
   "length": 300  // instead of 1000
 }
-
-```text
 ```
 
 5. **Check your usage:**
@@ -1249,12 +1106,9 @@ DAILY_API_LIMIT=100
 **Option 1: Use a different port**
 
 Edit `docker-compose.yml`:
-
 ```yaml
 ports:
   - "3001:3000"  # Change 3000 to 3001 (or any free port)
-
-```text
 ```
 
 Then access at `http://localhost:3001`
@@ -1262,21 +1116,15 @@ Then access at `http://localhost:3001`
 **Option 2: Stop the other service using port 3000**
 
 **Windows:**
-
 ```bash
 netstat -ano | findstr :3000
 taskkill /PID [PID_NUMBER] /F
-
-```text
 ```
 
 **Mac/Linux:**
-
 ```bash
 lsof -i :3000
 kill -9 [PID]
-
-```text
 ```
 
 ---
@@ -1290,23 +1138,17 @@ kill -9 [PID]
 **Solutions:**
 
 1. **Reduce content length:**
-
 ```json
 {
   "length": 500  // instead of 2000
 }
-
-```text
 ```
 
 2. **Don't use premium mode unless needed:**
-
 ```json
 {
   "use_premium": false
 }
-
-```text
 ```
 
 3. **Check your internet connection**
@@ -1334,18 +1176,14 @@ kill -9 [PID]
 - It's in your `.env` file
 - Check: `cat .env | grep ^API_KEY=`
 - If lost, just create a new password:
-
   ```env
   API_KEY=new-secure-password-123
-
   ```
-  ```
-
 - Restart: `docker-compose restart`
 
 ---
 
-## Frequently Asked Questions
+##  Frequently Asked Questions
 
 ### General Questions
 
@@ -1375,15 +1213,12 @@ kill -9 [PID]
 **A:** Most free servers don't have enough resources. You need at least 2GB RAM and persistent storage.
 
 **Q: How do I update to the latest version?**
-**A:**
-
+**A:** 
 ```bash
 git pull
 docker-compose down
 docker-compose build --no-cache
 docker-compose up -d
-
-```text
 ```
 
 **Q: Can I change the AI model?**
@@ -1429,13 +1264,10 @@ docker-compose up -d
 
 **Q: Can I generate content in other languages?**
 **A:** Yes! Just specify the language in your topic or add a note:
-
 ```json
 {
   "topic": "Schreiben Sie einen Blogpost über KI-Marketing (German)"
 }
-
-```text
 ```
 
 **Q: Can I customize the writing style?**
@@ -1462,32 +1294,22 @@ docker-compose up -d
 
 **Q: How do I see error messages?**
 **A:**
-
 ```bash
 docker-compose logs -f app
-
-```text
 ```
 
 **Q: Can I reset everything and start fresh?**
 **A:**
-
 ```bash
 docker-compose down -v
 docker-compose up -d
-
-```text
 ```
-
  This deletes all content!
 
 **Q: Where are my generated contents stored?**
 **A:** In the PostgreSQL database. To export:
-
 ```bash
 docker-compose exec db pg_dump -U splants splants > export.sql
-
-```text
 ```
 
 ---
@@ -1568,7 +1390,7 @@ docker-compose exec db pg_dump -U splants splants > export.sql
 
 ### GUI (Graphical User Interface)
 **Simple explanation:** Using buttons and visual elements (normal programs).
-**Example:**The web interface at localhost:3000
+**Example:** The web interface at localhost:3000
 
 ---
 
@@ -1576,29 +1398,21 @@ docker-compose exec db pg_dump -U splants splants > export.sql
 
 ### Documentation Resources
 
-1.**Primary Documentation:**
+1. **Primary Documentation:**
    - This README file
    - `docs_API_GUIDE.md` - Complete API reference
    - `docs_DEPLOYMENT.md` - Deployment procedures
 
 2. **Diagnostic Tools:**
-
 ```bash
 docker-compose logs -f app
-
-```text
 ```
-
 Use this command to view application logs and error messages.
 
 3. **System Testing:**
-
 ```bash
 python test_api.py
-
-```text
 ```
-
 This script validates all system features.
 
 4. **System Status:**
@@ -1614,9 +1428,9 @@ Access comprehensive API documentation at: `http://localhost:3000/api/docs`
 
 ### External Resources
 
-- **Docker Documentation:**[docs.docker.com](https://docs.docker.com)
--**OpenAI Documentation:**[platform.openai.com/docs](https://platform.openai.com/docs)
--**FastAPI Documentation:**[fastapi.tiangolo.com](https://fastapi.tiangolo.com)
+- **Docker Documentation:** [docs.docker.com](https://docs.docker.com)
+- **OpenAI Documentation:** [platform.openai.com/docs](https://platform.openai.com/docs)
+- **FastAPI Documentation:** [fastapi.tiangolo.com](https://fastapi.tiangolo.com)
 
 ---
 
@@ -1624,7 +1438,7 @@ Access comprehensive API documentation at: `http://localhost:3000/api/docs`
 
 ### Initial Configuration Complete
 
-1.**Generate Content:**
+1. **Generate Content:**
    - Access `http://localhost:3000`
    - Use the `/v1/generate` endpoint
 
@@ -1650,9 +1464,9 @@ Access comprehensive API documentation at: `http://localhost:3000/api/docs`
 
 ### Protecting Your API Keys
 
-**Critical:**Never commit your `.env` file or share your API keys publicly!
+**Critical:** Never commit your `.env` file or share your API keys publicly!
 
-1.**Environment Variables:**
+1. **Environment Variables:**
    - Always keep API keys in the `.env` file (never in code)
    - The `.env` file is included in `.gitignore` for protection
    - Use different API keys for development and production
@@ -1729,9 +1543,9 @@ If you believe your API keys have been compromised:
 - You have full control and ownership of all content
 
 **Third-Party Services:**
-- **OpenAI:**See [OpenAI API Data Privacy](https://openai.com/policies/api-data-usage-policies)
--**Anthropic:**See [Anthropic Privacy Policy](https://www.anthropic.com/privacy)
--**Webhooks:** Data sent only to URLs you configure
+- **OpenAI:** See [OpenAI API Data Privacy](https://openai.com/policies/api-data-usage-policies)
+- **Anthropic:** See [Anthropic Privacy Policy](https://www.anthropic.com/privacy)
+- **Webhooks:** Data sent only to URLs you configure
 
 ### Data Retention
 
@@ -1744,38 +1558,25 @@ If you believe your API keys have been compromised:
 **Manual Data Management:**
 
 1. **Backup Content:**
-
    ```bash
    make backup
-
    ```
-   ```
-
    Creates timestamped backup in `backups/` folder
 
 2. **Export Specific Content:**
-
    ```bash
    docker-compose exec db pg_dump -U splants splants -t contents > my-contents.sql
-
-   ```
    ```
 
 3. **Delete Old Content:**
    Access the database and delete by date:
-
    ```bash
    docker-compose exec db psql -U splants -d splants -c "DELETE FROM contents WHERE created_at < NOW() - INTERVAL '90 days';"
-
-   ```
    ```
 
 4. **Complete Data Deletion:**
-
    ```bash
    make clean  # WARNING: Deletes ALL data permanently
-
-   ```
    ```
 
 ### GDPR Compliance
@@ -1788,11 +1589,8 @@ If you're subject to GDPR or handling EU user data:
    - Audit: All operations logged in application logs
 
 2. **Right to be Forgotten:**
-
    ```bash
    docker-compose exec db psql -U splants -d splants -c "DELETE FROM contents WHERE metadata->>'user_id' = 'USER_ID';"
-
-   ```
    ```
 
 3. **Data Processing Agreement:**
@@ -1808,28 +1606,22 @@ If you're subject to GDPR or handling EU user data:
 ### Backup Strategy
 
 **Recommended Backup Schedule:**
-- **Daily:**Automated database backup (use cron jobs)
--**Weekly:**Full system backup (database + configuration)
--**Monthly:** Archive backup to external storage
+- **Daily:** Automated database backup (use cron jobs)
+- **Weekly:** Full system backup (database + configuration)
+- **Monthly:** Archive backup to external storage
 
 **Example Cron Job for Daily Backups:**
-
 ```bash
 # Add to crontab: crontab -e
 0 2 * * * cd /path/to/SPLANTS && make backup
-
-```text
 ```
 
 **Backup Verification:**
-
 ```bash
 # Test restore on a copy
 docker-compose down
 make restore file=backups/latest-backup.sql.gz
 make test  # Verify system works
-
-```text
 ```
 
 ---
@@ -1840,18 +1632,18 @@ This project is open source and available under the MIT License.
 
 ---
 
-## Acknowledgments
+##  Acknowledgments
 
 Built with:
-- **FastAPI**- Modern Python web framework
--**OpenAI GPT-4**- AI content generation
--**PostgreSQL**- Reliable database
--**Docker**- Easy deployment
--**Anthropic Claude** - Optional premium AI
+- **FastAPI** - Modern Python web framework
+- **OpenAI GPT-4** - AI content generation
+- **PostgreSQL** - Reliable database
+- **Docker** - Easy deployment
+- **Anthropic Claude** - Optional premium AI
 
 ---
 
-## Version History
+##  Version History
 
 **v2.1 - Current (2025-11-12)**
 -  Complete system with all features
@@ -1873,9 +1665,7 @@ For detailed version history and changelog, see [CHANGELOG.md](CHANGELOG.md)
 
 ### Quick Reference Card
 
-```text
 ```
-
 📍 Access Points:
 ├─ Web UI: http://localhost:3000  👈 Start here!
 ├─ API Docs: http://localhost:3000/api/docs
@@ -1907,8 +1697,6 @@ Diagnostics:
 ├─ Check logs: docker-compose logs -f
 ├─ Test API: python test_api.py
 └─ Review system status
-
-```text
 ```
 
 ---
