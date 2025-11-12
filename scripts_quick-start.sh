@@ -68,19 +68,33 @@ if ! command -v docker &> /dev/null; then
     exit 1
 fi
 
-# Check if 'docker-compose' command exists
-# Note: Newer Docker versions use 'docker compose' (no dash)
-if ! command -v docker-compose &> /dev/null; then
-    echo "⚠️  Warning: docker-compose not found"
-    echo "Newer Docker Desktop uses 'docker compose' (without dash)"
-    echo "We'll try to use that instead..."
+# Check if Docker Compose is available
+# Note: Newer Docker versions use 'docker compose' (no dash) as a plugin
+# Older versions use standalone 'docker-compose'
+DOCKER_COMPOSE_CMD=""
+
+if command -v docker-compose &> /dev/null; then
+    DOCKER_COMPOSE_CMD="docker-compose"
+    echo "✅ Found docker-compose (standalone)"
+elif docker compose version &> /dev/null; then
+    DOCKER_COMPOSE_CMD="docker compose"
+    echo "✅ Found docker compose (plugin)"
+else
+    echo "❌ Docker Compose is not available!"
     echo ""
-    # Create an alias for the rest of this script
-    shopt -s expand_aliases
-    alias docker-compose='docker compose'
+    echo "Docker Compose is required to run SPLANTS."
+    echo ""
+    echo "If you have Docker Desktop installed:"
+    echo "  - It should include Docker Compose"
+    echo "  - Try restarting Docker Desktop"
+    echo ""
+    echo "To verify Docker Compose:"
+    echo "  docker compose version"
+    echo ""
+    exit 1
 fi
 
-echo "✅ Docker is installed"
+echo "✅ Docker is installed and ready"
 echo ""
 
 # ============================================
@@ -234,7 +248,7 @@ echo ""
 # Build the Docker images
 # --quiet: Less output, cleaner display
 # On error, this will stop due to 'set -e' above
-docker-compose build
+$DOCKER_COMPOSE_CMD build
 
 echo ""
 echo "✅ Docker images built successfully"
@@ -249,7 +263,7 @@ echo ""
 
 # Start all services in detached mode (background)
 # -d: detached mode (runs in background)
-docker-compose up -d
+$DOCKER_COMPOSE_CMD up -d
 
 echo ""
 echo "✅ Services started"
@@ -278,7 +292,7 @@ echo ""
 # ============================================
 
 # Check if services are actually running
-if docker-compose ps | grep -q "Up"; then
+if $DOCKER_COMPOSE_CMD ps | grep -q "Up"; then
     echo "✅ Services are running!"
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -294,10 +308,10 @@ if docker-compose ps | grep -q "Up"; then
     echo ""
     echo "📚 Quick Commands:"
     echo "   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "   View logs:      docker-compose logs -f"
-    echo "   Stop services:  docker-compose down"
-    echo "   Restart:        docker-compose restart"
-    echo "   Check status:   docker-compose ps"
+    echo "   View logs:      $DOCKER_COMPOSE_CMD logs -f"
+    echo "   Stop services:  $DOCKER_COMPOSE_CMD down"
+    echo "   Restart:        $DOCKER_COMPOSE_CMD restart"
+    echo "   Check status:   $DOCKER_COMPOSE_CMD ps"
     echo ""
     echo "🎯 Next Steps:"
     echo "   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -324,9 +338,9 @@ else
     echo ""
     echo "Troubleshooting steps:"
     echo "  1. Check if Docker is running (whale icon)"
-    echo "  2. View logs: docker-compose logs"
+    echo "  2. View logs: $DOCKER_COMPOSE_CMD logs"
     echo "  3. See TROUBLESHOOTING.md for solutions"
-    echo "  4. Try restarting: docker-compose down && docker-compose up -d"
+    echo "  4. Try restarting: $DOCKER_COMPOSE_CMD down && $DOCKER_COMPOSE_CMD up -d"
     echo ""
     exit 1
 fi
