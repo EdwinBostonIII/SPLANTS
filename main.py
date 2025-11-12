@@ -33,7 +33,7 @@ from pydantic import BaseModel, Field, field_validator, ConfigDict
 from typing import List, Optional, Dict, Any, Literal
 import asyncio
 import asyncpg
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import os
 import hashlib
 import json
@@ -1918,7 +1918,7 @@ class SocialPublisher:
         
         if not all_times:
             # Default to 2 PM UTC tomorrow
-            return datetime.utcnow().replace(hour=14, minute=0, second=0, microsecond=0) + timedelta(days=1)
+            return datetime.now(timezone.utc).replace(hour=14, minute=0, second=0, microsecond=0) + timedelta(days=1)
         
         # Find most common time
         from collections import Counter
@@ -1926,7 +1926,7 @@ class SocialPublisher:
         best_time = time_counts.most_common(1)[0][0]
         
         # Schedule for tomorrow at that time
-        tomorrow = datetime.utcnow() + timedelta(days=1)
+        tomorrow = datetime.now(timezone.utc) + timedelta(days=1)
         return tomorrow.replace(hour=best_time[0], minute=best_time[1], second=0, microsecond=0)
     
     def _is_auto_posting_available(self, platform: Platform) -> bool:
@@ -1981,7 +1981,7 @@ class SocialPublisher:
                     UPDATE social_posts
                     SET status = $1, published_at = $2
                     WHERE id = $3
-                ''', 'publishing', datetime.utcnow(), post_id)
+                ''', 'publishing', datetime.now(timezone.utc), post_id)
             
             # PAID OPTIONAL ENHANCEMENT: Platform Auto-Posting
             # Requires platform-specific API keys configured in environment variables.
@@ -2462,7 +2462,7 @@ class CostController:
         today_cost = float(daily['total_cost'] or 0)
         
         # Calculate projections
-        current_day = datetime.utcnow().day
+        current_day = datetime.now(timezone.utc).day
         days_in_month = 30  # Simplified
         projected_monthly = (month_cost / max(current_day, 1)) * days_in_month if current_day > 0 else 0
         
@@ -2555,7 +2555,7 @@ class CostController:
         
         # Spending rate alerts
         expected_daily = self.monthly_budget / 30
-        actual_daily = month_cost / max(datetime.utcnow().day, 1)
+        actual_daily = month_cost / max(datetime.now(timezone.utc).day, 1)
         
         if actual_daily > expected_daily * 1.5:
             alerts.append({
@@ -2860,7 +2860,7 @@ class WebhookSystem:
         
         payload = {
             "event": event_type,
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "data": data
         }
         
@@ -3016,7 +3016,7 @@ async def health_check():
     
     return {
         "status": "healthy" if db_status == "connected" else "degraded",
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "version": "2.1",
         "services": {
             "database": db_status,
@@ -3025,7 +3025,7 @@ async def health_check():
             "redis_cache": "enabled" if CACHE_ENABLED else "disabled",
             "cost_control": "enabled" if MONTHLY_AI_BUDGET > 0 else "disabled"
         },
-        "uptime_since": datetime.utcnow().isoformat(),
+        "uptime_since": datetime.now(timezone.utc).isoformat(),
         "api_docs": "/docs"
     }
 
@@ -3521,7 +3521,7 @@ async def register_webhook(
     try:
         test_payload = {
             "event": "webhook_test",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "message": "This is a test webhook delivery"
         }
         
@@ -3719,7 +3719,7 @@ async def get_system_status(
     
     return {
         "status": "operational",
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "version": "2.1",
         "services": {
             "database": {
@@ -3798,7 +3798,7 @@ async def detailed_health_check(
     """
     health = {
         "overall": "healthy",
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "components": {}
     }
     
@@ -3862,7 +3862,7 @@ async def http_exception_handler(request, exc):
     return {
         "error": exc.detail,
         "status_code": exc.status_code,
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "path": str(request.url),
         "method": request.method,
         "help": {
@@ -3883,7 +3883,7 @@ async def general_exception_handler(request, exc):
         "error": "Internal server error",
         "message": str(exc),
         "status_code": 500,
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "path": str(request.url),
         "note": "This error has been logged. Please contact support if it persists."
     }
