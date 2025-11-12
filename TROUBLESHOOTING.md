@@ -1,20 +1,20 @@
-#  SPLANTS Marketing Engine - Troubleshooting Guide
+# SPLANTS Marketing Engine - Troubleshooting Guide
 
-## Complete Problem-Solving Reference
+## Problem-Solving Reference
 
-This guide helps you solve common problems. Find your issue below and follow the steps!
+This guide provides solutions to common system issues. Locate the relevant problem category and follow the provided steps.
 
 ---
 
-##  Quick Diagnostic Checklist
+## Quick Diagnostic Checklist
 
-Before diving into specific problems, check these basics:
+Verify these basic requirements before proceeding to specific problem categories:
 
-- [ ] Is Docker running? (Look for whale icon )
-- [ ] Are services running? Run: `docker-compose ps`
-- [ ] Did you wait 60 seconds after starting?
-- [ ] Is your `.env` file configured correctly?
-- [ ] Do you have internet connection?
+- [ ] Docker service is running
+- [ ] Services status: Run `docker-compose ps`
+- [ ] System initialization: Wait 60 seconds after starting
+- [ ] Configuration file (`.env`) is properly configured
+- [ ] Network connectivity is established
 
 ---
 
