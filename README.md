@@ -391,7 +391,7 @@ docker-compose up -d
 
 Open your web browser and go to:
 ```
-http://localhost:8080
+http://localhost:3000
 ```
 
 **You should see:** A welcome page with system information! 
@@ -404,7 +404,7 @@ http://localhost:8080
 
 1. **Open the API Documentation:**
    ```
-   http://localhost:8080/docs
+   http://localhost:3000/api/docs
    ```
 
 2. **You'll see a beautiful interface** with all available features
@@ -445,7 +445,7 @@ import requests
 
 # Your configuration
 API_KEY = "your-api-key-here"  # From your .env file
-BASE_URL = "http://localhost:8080"
+BASE_URL = "http://localhost:3000/api"
 
 # Make a request
 response = requests.post(
@@ -474,7 +474,7 @@ print(f"Content: {content['content']}")
 const axios = require('axios');
 
 const API_KEY = 'your-api-key-here';
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'http://localhost:3000/api';
 
 async function generateContent() {
   const response = await axios.post(
@@ -590,7 +590,7 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 **Goal:** Create a 800-word blog post about AI marketing
 
 **Steps:**
-1. Go to `http://localhost:8080/docs`
+1. Go to `http://localhost:3000` or `http://localhost:3000/api/docs`
 2. Find "POST /v1/generate"
 3. Click "Try it out"
 4. Enter:
@@ -649,7 +649,7 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 **Goal:** See how much content you've created and costs
 
 **Steps:**
-1. Go to `http://localhost:8080/docs`
+1. Go to `http://localhost:3000` and check the Dashboard
 2. Find "GET /v1/analytics/dashboard"
 3. Click "Try it out"
 4. Enter `days: 30` (to see last 30 days)
@@ -669,7 +669,7 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 **Goal:** Check how much you've spent this month
 
 **Steps:**
-1. Go to `http://localhost:8080/docs`
+1. Go to `http://localhost:3000` and check the Dashboard
 2. Find "GET /v1/costs/usage"
 3. Click "Try it out"
 4. Click "Execute"
@@ -689,7 +689,7 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 
 **Steps:**
 1. See available templates:
-   - Go to `http://localhost:8080/docs`
+   - Go to `http://localhost:3000` or API docs at `http://localhost:3000/api/docs`
    - Find "GET /v1/templates"
    - Click "Execute"
 
@@ -828,7 +828,7 @@ sudo systemctl enable docker
 
 ---
 
-### Problem: "Cannot connect to API at http://localhost:8080"
+### Problem: "Cannot connect to Web UI at http://localhost:3000"
 
 **Symptoms:**
 - Browser shows "This site can't be reached"
@@ -980,7 +980,7 @@ DAILY_API_LIMIT=100
 ```
 
 5. **Check your usage:**
-   - Go to `http://localhost:8080/docs`
+   - Go to `http://localhost:3000` dashboard
    - Use "GET /v1/costs/usage"
    - Review spending patterns
 
@@ -1078,7 +1078,7 @@ kill -9 [PID]
 ### General Questions
 
 **Q: Do I need to know how to code?**
-**A:** No! You can use the web interface at `http://localhost:8080/docs` to do everything. No coding required.
+**A:** No! You can use the web interface at `http://localhost:3000` to do everything. No coding required.
 
 **Q: Is this legal to use for my business?**
 **A:** Yes! OpenAI grants you full rights to content generated through their API. You own the content.
@@ -1252,7 +1252,7 @@ docker-compose exec db pg_dump -U splants splants > export.sql
 
 ### Port
 **Simple explanation:** A "door" where programs communicate.
-**Example:** Port 8080 is like apartment number 8080 in a building.
+**Example:** Port 3000 is like apartment number 3000 in a building.
 
 ### localhost
 **Simple explanation:** Your own computer.
@@ -1280,7 +1280,7 @@ docker-compose exec db pg_dump -U splants splants > export.sql
 
 ### GUI (Graphical User Interface)
 **Simple explanation:** Using buttons and visual elements (normal programs).
-**Example:** The web interface at localhost:8080/docs
+**Example:** The web interface at localhost:3000
 
 ---
 
@@ -1306,11 +1306,11 @@ python test_api.py
 This script validates all system features.
 
 4. **System Status:**
-Access the status endpoint at: `http://localhost:8080/v1/system/status`
+Access the status endpoint at: `http://localhost:3000/api/v1/system/status`
 
 ### Interactive API Documentation
 
-Access comprehensive API documentation at: `http://localhost:8080/docs`
+Access comprehensive API documentation at: `http://localhost:3000/api/docs`
 - Complete feature reference
 - Request/response examples
 - Interactive testing interface
@@ -1329,7 +1329,7 @@ Access comprehensive API documentation at: `http://localhost:8080/docs`
 ### Initial Configuration Complete
 
 1. **Generate Content:**
-   - Access `http://localhost:8080/docs`
+   - Access `http://localhost:3000`
    - Use the `/v1/generate` endpoint
 
 2. **Review Analytics:**
@@ -1387,10 +1387,10 @@ Built with:
 
 ```
 📍 Access Points:
-├─ Main API: http://localhost:8080
-├─ API Docs: http://localhost:8080/docs
-├─ Health: http://localhost:8080/health
-└─ Status: http://localhost:8080/v1/system/status
+├─ Web UI: http://localhost:3000  👈 Start here!
+├─ API Docs: http://localhost:3000/api/docs
+├─ Health: http://localhost:3000/api/health
+└─ Status: http://localhost:3000/api/v1/system/status
 
 Important Files:
 ├─ .env - Configuration file (API keys)

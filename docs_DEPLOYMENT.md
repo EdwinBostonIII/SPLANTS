@@ -24,7 +24,7 @@ cp .env.example .env
 # Start services
 docker-compose up -d
 
-# Access at http://localhost:8080
+# Access at http://localhost:3000/api
 ```
 
 ### Option 2: VPS Deployment (Recommended)
@@ -89,7 +89,7 @@ server {
     server_name your-domain.com;
     
     location / {
-        proxy_pass http://localhost:8080;
+        proxy_pass http://localhost:3000/api;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }

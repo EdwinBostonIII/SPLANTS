@@ -800,7 +800,7 @@ splants_db_1     docker-entrypoint.sh postgres  Up      5432/tcp
 ### Test #1: Can You Access the API?
 
 1. **Open your web browser**
-2. **Go to:** `http://localhost:8080`
+2. **Go to:** `http://localhost:3000`
 
 **You should see:**
 A JSON response with system information like:
@@ -825,7 +825,7 @@ A JSON response with system information like:
 
 ### Test #2: Check System Health
 
-**Go to:** `http://localhost:8080/health`
+**Go to:** `http://localhost:3000/api/health`
 
 **You should see:**
 
@@ -851,7 +851,7 @@ A JSON response with system information like:
 
 ### Test #3: Interactive API Documentation
 
-1. **Go to:** `http://localhost:8080/docs`
+1. **Go to:** `http://localhost:3000/api/docs`
 
 **You should see:**
 A beautiful interactive API documentation page with:
@@ -917,7 +917,7 @@ This is the recommended method for beginners.
 
 #### Step 7.1: Open API Documentation
 
-**Go to:** `http://localhost:8080/docs`
+**Go to:** `http://localhost:3000/api/docs`
 
 #### Step 7.2: Authorize Your Access
 
@@ -1096,7 +1096,7 @@ Now that everything works, here's what to do:
 
 **Analytics Dashboard:**
 ```
-http://localhost:8080/docs
+http://localhost:3000/api/docs
 → Find: GET /v1/analytics/dashboard
 → Try it out with days: 7
 ```
@@ -1244,10 +1244,10 @@ Alternative configuration: Remote access via server deployment
 
 **System URLs:**
 ```
-Main API: http://localhost:8080
-API Docs: http://localhost:8080/docs
-Health Check: http://localhost:8080/health
-System Status: http://localhost:8080/v1/system/status
+Main API: http://localhost:3000
+API Docs: http://localhost:3000/api/docs
+Health Check: http://localhost:3000/api/health
+System Status: http://localhost:3000/api/v1/system/status
 ```
 
 **System Commands:**

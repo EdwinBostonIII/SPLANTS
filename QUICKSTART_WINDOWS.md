@@ -213,7 +213,7 @@ This is downloading software (normal, only happens once!)
 ### Open Web Browser
 
 1. **Open** Chrome, Edge, or Firefox
-2. **Go to:** `http://localhost:8080`
+2. **Go to:** `http://localhost:3000/api`
 
 ### You Should See
 
@@ -230,7 +230,7 @@ A page with system information like:
 
 ### Open API Documentation
 
-**Go to:** `http://localhost:8080/docs`
+**Go to:** `http://localhost:3000/api/docs`
 
 You'll see a beautiful interface with:
 - List of features
@@ -275,7 +275,7 @@ You'll see a beautiful interface with:
 2. **Open Command Prompt** in SPLANTS folder
 3. **Type:** `docker-compose up -d`
 4. **Wait** 30-60 seconds
-5. **Open browser:** `http://localhost:8080/docs`
+5. **Open browser:** `http://localhost:3000/api/docs`
 
 ### Stopping SPLANTS
 
@@ -310,10 +310,10 @@ Press Ctrl+C to exit logs.
 ### Important URLs
 
 ```
-Main API:      http://localhost:8080
-API Docs:      http://localhost:8080/docs  👈 Use this!
-Health Check:  http://localhost:8080/health
-System Status: http://localhost:8080/v1/system/status
+Main API:      http://localhost:3000/api
+API Docs:      http://localhost:3000/api/docs  👈 Use this!
+Health Check:  http://localhost:3000/api/health
+System Status: http://localhost:3000/api/v1/system/status
 ```
 
 ### Important Commands
@@ -420,4 +420,4 @@ Now that it's working:
 
 **Remember:** You now have a tool worth thousands of dollars that costs only $35-80/month. Use it well!
 
-**Pro Tip:** Bookmark `http://localhost:8080/docs` - you'll use it daily!
+**Pro Tip:** Bookmark `http://localhost:3000/api/docs` - you'll use it daily!
