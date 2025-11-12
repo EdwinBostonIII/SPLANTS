@@ -1,4 +1,5 @@
 # SPLANTS Marketing Engine
+
 ## AI-Powered Content Generation for SPLANTS Custom Pants
 
 ![Version](https://img.shields.io/badge/version-2.1-blue)
@@ -52,7 +53,8 @@ The engine provides:
 
 ---
 
- **Small Business Owners** who need marketing but can't afford an agency
+**Small Business Owners** who need marketing but can't afford an agency
+
 ## What You Get
 
 ### Core Features (Included)
