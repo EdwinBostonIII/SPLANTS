@@ -1,53 +1,53 @@
-#  SPLANTS Quick Start - Windows Users
+# SPLANTS Quick Start - Windows Users
 
-## Get Started in 15 Minutes!
+## Windows 10/11 Setup Guide
 
-This guide is specifically for **Windows 10/11** users with **no technical background**. Just follow the steps!
+This guide provides setup instructions for Windows 10/11 systems. Follow the documented steps in sequence.
 
 ---
 
-##  Before You Start
+## Prerequisites
 
-You need:
+Required components:
 - [ ] Windows 10 or Windows 11 (64-bit)
 - [ ] Internet connection
-- [ ] 15 minutes of time
-- [ ] Credit card (for OpenAI - you'll add $20)
+- [ ] Approximately 15 minutes for setup
+- [ ] OpenAI account with credit ($20 recommended initial amount)
 
 ---
 
 ## Step 1: Install Docker Desktop (5 minutes)
 
-### What is Docker?
-Think of Docker as a "virtual box" that contains everything SPLANTS needs to run. You only install it once!
+### Docker Overview
+Docker is a containerization platform that provides the runtime environment for SPLANTS. This is a one-time installation.
 
 ### Download Docker
 
-1. **Open your web browser** (Edge, Chrome, Firefox)
-2. **Go to:** https://www.docker.com/products/docker-desktop
-3. **Click:** "Download for Windows" (big blue button)
-4. **Wait:** File is ~500MB, takes 5-15 minutes depending on internet speed
+1. Access web browser (Edge, Chrome, or Firefox)
+2. Navigate to: https://www.docker.com/products/docker-desktop
+3. Select "Download for Windows"
+4. File size: approximately 500MB (download time varies by connection speed)
 
 ### Install Docker
 
-1. **Find downloaded file:** Usually in `Downloads` folder
+1. Locate downloaded file in `Downloads` folder
    - File name: `Docker Desktop Installer.exe`
-2. **Double-click** the file
-3. **Click "Yes"** when Windows asks for permission
-4. **Follow the wizard:**
-   - Click "OK" to start
-   - Wait 5-10 minutes (installing)
-   - Click "Close and restart" when done
-5. **Restart your computer**
+2. Execute the installer file
+3. Grant administrator permission when prompted
+4. Follow installation wizard:
+   - Select "OK" to begin installation
+   - Wait 5-10 minutes for installation completion
+   - Select "Close and restart" when prompted
+5. Restart computer
 
 ### Start Docker
 
-1. **After restart,** Docker Desktop should open automatically
-2. **Look for whale icon ** in system tray (bottom-right, near clock)
-3. **If you see it:** Docker is running! 
-4. **If not:** 
-   - Click Start button
-   - Type "Docker Desktop"
+1. After system restart, Docker Desktop should launch automatically
+2. Verify Docker status by checking system tray (bottom-right corner)
+3. Docker whale icon indicates active status
+4. If icon is not visible:
+   - Open Start menu
+   - Search for "Docker Desktop"
    - Click to open it
 
 ### Troubleshooting
