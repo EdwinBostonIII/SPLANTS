@@ -309,6 +309,25 @@ async def startup():
             )
         ''')
         
+        # System Settings Table - for dynamic configuration
+        await conn.execute('''
+            CREATE TABLE IF NOT EXISTS system_settings (
+                id SERIAL PRIMARY KEY,
+                setting_key VARCHAR(100) UNIQUE NOT NULL,
+                setting_value TEXT,
+                setting_type VARCHAR(50) DEFAULT 'string',
+                description TEXT,
+                updated_at TIMESTAMP DEFAULT NOW(),
+                created_at TIMESTAMP DEFAULT NOW()
+            )
+        ''')
+        
+        # Create index for faster settings queries
+        await conn.execute('''
+            CREATE INDEX IF NOT EXISTS idx_system_settings_key 
+            ON system_settings(setting_key)
+        ''')
+        
         logger.info(" Database tables initialized")
     
     # PAID OPTIONAL ENHANCEMENT: Redis Cache Connection (+$10-15/month)
@@ -2777,18 +2796,55 @@ class WebhookSystem:
     Cost: Free (you just need webhook URLs)
     """
     
+    async def get_webhook_url(self, webhook_type: str) -> Optional[str]:
+        """
+        Get webhook URL from database first, fallback to environment variable
+        
+        webhook_type can be:
+        - 'content_generated'
+        - 'content_published'
+        - 'daily_report'
+        """
+        try:
+            # Try to get from database first
+            async with db_pool.acquire() as conn:
+                result = await conn.fetchval('''
+                    SELECT setting_value FROM system_settings
+                    WHERE setting_key = $1
+                ''', f'webhook_{webhook_type}_url')
+                
+                if result:
+                    return result
+        except Exception as e:
+            logger.warning(f"Could not read webhook URL from database: {e}")
+        
+        # Fallback to environment variables
+        if webhook_type == 'content_generated':
+            return WEBHOOK_CONTENT_GENERATED
+        elif webhook_type == 'content_published':
+            return WEBHOOK_CONTENT_PUBLISHED
+        elif webhook_type == 'daily_report':
+            return WEBHOOK_DAILY_REPORT
+        
+        return None
+    
     async def trigger_webhook(
         self,
         event_type: str,
         data: Dict[str, Any],
-        webhook_url: str,
+        webhook_url: str = None,
         retry_count: int = 0
     ):
         """
         Trigger a webhook with event data
         
         Includes automatic retry logic for failed deliveries
+        If webhook_url is not provided, it will be retrieved from settings
         """
+        
+        # If webhook_url not provided, get it from settings
+        if not webhook_url:
+            webhook_url = await self.get_webhook_url(event_type)
         
         if not webhook_url:
             return
@@ -3517,6 +3573,100 @@ async def get_webhook_logs(
     return {
         "total": len(logs),
         "logs": [dict(log) for log in logs]
+    }
+
+# ============================================
+# SYSTEM SETTINGS ENDPOINTS
+# ============================================
+
+class SystemSettingsRequest(BaseModel):
+    """Request model for updating system settings"""
+    webhook_content_generated_url: Optional[str] = Field(None, description="Webhook URL for content generated events")
+    webhook_content_published_url: Optional[str] = Field(None, description="Webhook URL for content published events")
+    webhook_daily_report_url: Optional[str] = Field(None, description="Webhook URL for daily report events")
+
+@app.get("/v1/system/settings", tags=["System"])
+async def get_system_settings(
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Get current system settings
+    
+    Returns webhook URLs and other configurable settings.
+    These can be updated via the Settings page in the UI.
+    """
+    async with db_pool.acquire() as conn:
+        settings = await conn.fetch('''
+            SELECT setting_key, setting_value, description, updated_at
+            FROM system_settings
+            WHERE setting_key LIKE 'webhook_%'
+            ORDER BY setting_key
+        ''')
+    
+    settings_dict = {}
+    for setting in settings:
+        settings_dict[setting['setting_key']] = {
+            'value': setting['setting_value'],
+            'description': setting['description'],
+            'updated_at': setting['updated_at'].isoformat() if setting['updated_at'] else None
+        }
+    
+    return {
+        "settings": settings_dict,
+        "environment_fallbacks": {
+            "webhook_content_generated_url": WEBHOOK_CONTENT_GENERATED,
+            "webhook_content_published_url": WEBHOOK_CONTENT_PUBLISHED,
+            "webhook_daily_report_url": WEBHOOK_DAILY_REPORT
+        }
+    }
+
+@app.post("/v1/system/settings", tags=["System"])
+async def update_system_settings(
+    settings: SystemSettingsRequest,
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Update system settings
+    
+    Allows dynamic configuration of webhook URLs and other settings
+    without needing to restart the application or edit .env file.
+    
+    Settings are stored in the database and take precedence over
+    environment variables.
+    """
+    async with db_pool.acquire() as conn:
+        updated_settings = []
+        
+        # Update webhook URLs if provided
+        webhook_mappings = {
+            'webhook_content_generated_url': (settings.webhook_content_generated_url, 'Webhook URL triggered when content is generated'),
+            'webhook_content_published_url': (settings.webhook_content_published_url, 'Webhook URL triggered when content is published'),
+            'webhook_daily_report_url': (settings.webhook_daily_report_url, 'Webhook URL triggered for daily reports')
+        }
+        
+        for key, (value, description) in webhook_mappings.items():
+            if value is not None:  # Only update if value is provided
+                await conn.execute('''
+                    INSERT INTO system_settings (setting_key, setting_value, setting_type, description, updated_at)
+                    VALUES ($1, $2, 'string', $3, NOW())
+                    ON CONFLICT (setting_key)
+                    DO UPDATE SET 
+                        setting_value = EXCLUDED.setting_value,
+                        description = EXCLUDED.description,
+                        updated_at = NOW()
+                ''', key, value, description)
+                
+                updated_settings.append({
+                    'key': key,
+                    'value': value
+                })
+                
+                logger.info(f"System setting updated: {key} = {value[:50] if value else 'null'}...")
+    
+    return {
+        "success": True,
+        "message": f"Updated {len(updated_settings)} setting(s)",
+        "updated_settings": updated_settings
     }
 
 # ============================================

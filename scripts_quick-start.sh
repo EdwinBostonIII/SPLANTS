@@ -84,7 +84,7 @@ echo "✅ Docker is installed"
 echo ""
 
 # ============================================
-# STEP 2: Create .env Configuration File
+# STEP 2: Create .env Configuration File (Interactive)
 # ============================================
 
 echo "Step 2/5: Setting up configuration..."
@@ -92,15 +92,16 @@ echo ""
 
 # Check if .env file already exists
 if [ ! -f .env ]; then
-    echo "Creating .env file from template..."
-    
-    # Copy the example file to create .env
-    cp .env.example .env
-    
-    echo "✅ Created .env file"
-    echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "⚠️  IMPORTANT: You need to add your OpenAI API key"
+    echo "Interactive Setup Wizard"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "I'll help you configure SPLANTS by asking a few questions."
+    echo ""
+    
+    # Step 2a: Get OpenAI API Key
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "1. OpenAI API Key (Required)"
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
     echo "What is an OpenAI API key?"
@@ -108,30 +109,113 @@ if [ ! -f .env ]; then
     echo "  - Required for content generation"
     echo "  - Get one at: https://platform.openai.com/api-keys"
     echo ""
-    echo "How to add it:"
-    echo "  1. Open the .env file in a text editor"
-    echo "  2. Find the line: OPENAI_API_KEY=sk-your-api-key-here"
-    echo "  3. Replace 'sk-your-api-key-here' with your actual key"
-    echo "  4. Save the file"
+    echo "Please paste your OpenAI API Key below:"
+    echo "(It should start with 'sk-' or 'sk-proj-')"
     echo ""
-    echo "Also recommended:"
-    echo "  - Change API_KEY to a secure password (protects your system)"
-    echo "  - Set MONTHLY_AI_BUDGET to control spending"
+    read -p "OpenAI API Key: " OPENAI_KEY
     echo ""
     
-    # Prompt user to confirm they've added their key
-    read -p "Have you added your OpenAI API key to .env? (y/n): " -n 1 -r
-    echo ""
-    
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    # Validate OpenAI key format
+    if [[ ! $OPENAI_KEY =~ ^sk- ]]; then
+        echo "⚠️  Warning: Your key doesn't start with 'sk-'"
+        echo "This might not be a valid OpenAI API key."
         echo ""
-        echo "No problem! Here's what to do:"
-        echo "  1. Edit the .env file now"
-        echo "  2. Add your OpenAI API key"
-        echo "  3. Run this script again: ./scripts_quick-start.sh"
+        read -p "Continue anyway? (y/n): " -n 1 -r
         echo ""
-        exit 1
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            echo "Setup cancelled. Please run this script again with a valid API key."
+            exit 1
+        fi
     fi
+    
+    # Step 2b: Generate or provide API_KEY
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "2. System API Key (Required)"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "What is a System API Key?"
+    echo "  - Password that protects YOUR SPLANTS system"
+    echo "  - Only people with this key can use your system"
+    echo "  - Must be secure (at least 12 characters)"
+    echo ""
+    echo "Would you like me to generate a secure key for you?"
+    echo ""
+    read -p "Generate secure key automatically? (y/n): " -n 1 -r
+    echo ""
+    
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        # Generate a secure random API key
+        SYSTEM_API_KEY="SPLANTS-$(date +%s)-$(openssl rand -hex 16 2>/dev/null || head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32)"
+        echo "✅ Generated secure API key"
+    else
+        echo ""
+        echo "Please enter your own API key (minimum 12 characters):"
+        read -p "System API Key: " SYSTEM_API_KEY
+        
+        # Validate length
+        if [ ${#SYSTEM_API_KEY} -lt 12 ]; then
+            echo "❌ Error: API key must be at least 12 characters"
+            exit 1
+        fi
+    fi
+    echo ""
+    
+    # Step 2c: Monthly Budget (Optional)
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "3. Monthly AI Budget (Optional)"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "Set a monthly spending limit to control costs?"
+    echo "  - Recommended: \$50 (covers ~150-200 pieces of content)"
+    echo "  - Light use: \$30"
+    echo "  - Heavy use: \$100"
+    echo "  - 0 for unlimited (not recommended)"
+    echo ""
+    read -p "Monthly budget in USD (press Enter for \$50): " MONTHLY_BUDGET
+    MONTHLY_BUDGET=${MONTHLY_BUDGET:-50}
+    echo ""
+    
+    # Step 2d: Create .env file
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "Creating .env configuration file..."
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    
+    # Copy template and update with user values
+    cp .env.example .env
+    
+    # Use sed to replace values in .env
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        # macOS version
+        sed -i '' "s|OPENAI_API_KEY=.*|OPENAI_API_KEY=${OPENAI_KEY}|" .env
+        sed -i '' "s|API_KEY=.*|API_KEY=${SYSTEM_API_KEY}|" .env
+        sed -i '' "s|MONTHLY_AI_BUDGET=.*|MONTHLY_AI_BUDGET=${MONTHLY_BUDGET}|" .env
+    else
+        # Linux version
+        sed -i "s|OPENAI_API_KEY=.*|OPENAI_API_KEY=${OPENAI_KEY}|" .env
+        sed -i "s|API_KEY=.*|API_KEY=${SYSTEM_API_KEY}|" .env
+        sed -i "s|MONTHLY_AI_BUDGET=.*|MONTHLY_AI_BUDGET=${MONTHLY_BUDGET}|" .env
+    fi
+    
+    echo "✅ Configuration file created successfully!"
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "⚠️  IMPORTANT: Save this information!"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    echo "Your System API Key (save this in a safe place):"
+    echo ""
+    echo "  ${SYSTEM_API_KEY}"
+    echo ""
+    echo "You'll need this to access your SPLANTS system."
+    echo "Add it to API requests with the header: X-API-Key"
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo ""
+    
+    # Pause to let user save the key
+    read -p "Press Enter when you've saved your API key..."
+    echo ""
 else
     echo "✅ .env file already exists"
     echo ""
