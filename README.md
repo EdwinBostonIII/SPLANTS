@@ -834,8 +834,6 @@ make backup
 ```bash
 make restore file=backups/splants_backup_20240101_120000.sql.gz
 ```
-./scripts_restore.sh backups/your-backup-file.sql.gz
-```
 
 ---
 
@@ -1393,6 +1391,172 @@ Access comprehensive API documentation at: `http://localhost:3000/api/docs`
 
 ---
 
+## 🔒 Security Best Practices
+
+### Protecting Your API Keys
+
+**Critical:** Never commit your `.env` file or share your API keys publicly!
+
+1. **Environment Variables:**
+   - Always keep API keys in the `.env` file (never in code)
+   - The `.env` file is included in `.gitignore` for protection
+   - Use different API keys for development and production
+
+2. **System API Key:**
+   - Generate a strong, unique API key (minimum 32 characters)
+   - Use a password manager to store it securely
+   - Rotate API keys regularly (every 90 days recommended)
+
+3. **OpenAI API Key Security:**
+   - Set spending limits in OpenAI dashboard
+   - Monitor API usage regularly
+   - Revoke and regenerate keys if compromised
+   - Never share keys in screenshots, logs, or error messages
+
+4. **Access Control:**
+   - Limit who has access to the server/machine running SPLANTS
+   - Use firewalls to restrict network access to trusted IPs
+   - Consider using SSH key authentication for remote servers
+   - Enable audit logging for production environments
+
+5. **Docker Security:**
+   - Keep Docker and all images updated
+   - Don't expose unnecessary ports publicly
+   - Use Docker secrets for sensitive data in production
+   - Run containers with minimal privileges
+
+6. **Database Security:**
+   - Change default PostgreSQL password in production
+   - Use strong database passwords (20+ characters)
+   - Restrict database access to localhost only (unless needed)
+   - Enable SSL/TLS for database connections in production
+
+7. **Production Deployment:**
+   - Use HTTPS/TLS for all web traffic
+   - Implement rate limiting to prevent abuse
+   - Set up monitoring and alerting for suspicious activity
+   - Regular security updates and patches
+
+**Emergency Response:**
+If you believe your API keys have been compromised:
+1. Immediately revoke the compromised keys
+2. Generate new keys
+3. Update your `.env` file
+4. Restart the system: `make restart`
+5. Monitor OpenAI billing for unauthorized usage
+
+---
+
+## 📊 Data Retention and Privacy Policy
+
+### Data Storage
+
+**What Data is Stored:**
+- Generated content (blog posts, social media, emails, etc.)
+- Content metadata (creation date, type, quality scores)
+- Analytics data (usage statistics, performance metrics)
+- Cost tracking information
+- A/B test results and webhook logs
+
+**Where Data is Stored:**
+- Local PostgreSQL database (on your server/computer)
+- No data is sent to external services except:
+  - OpenAI API (for content generation only)
+  - Anthropic API (if premium mode enabled)
+  - Configured webhooks (if enabled)
+
+### Data Privacy
+
+**Your Content is Private:**
+- All generated content stays in your local database
+- OpenAI does not use API data for model training
+- No telemetry or usage tracking to external services
+- You have full control and ownership of all content
+
+**Third-Party Services:**
+- **OpenAI:** See [OpenAI API Data Privacy](https://openai.com/policies/api-data-usage-policies)
+- **Anthropic:** See [Anthropic Privacy Policy](https://www.anthropic.com/privacy)
+- **Webhooks:** Data sent only to URLs you configure
+
+### Data Retention
+
+**Automatic Retention:**
+- Content: Stored indefinitely by default
+- Analytics: Aggregated monthly, kept indefinitely
+- Logs: Rotated after 30 days (configurable)
+- Backups: Manual creation/deletion (you control retention)
+
+**Manual Data Management:**
+
+1. **Backup Content:**
+   ```bash
+   make backup
+   ```
+   Creates timestamped backup in `backups/` folder
+
+2. **Export Specific Content:**
+   ```bash
+   docker-compose exec db pg_dump -U splants splants -t contents > my-contents.sql
+   ```
+
+3. **Delete Old Content:**
+   Access the database and delete by date:
+   ```bash
+   docker-compose exec db psql -U splants -d splants -c "DELETE FROM contents WHERE created_at < NOW() - INTERVAL '90 days';"
+   ```
+
+4. **Complete Data Deletion:**
+   ```bash
+   make clean  # WARNING: Deletes ALL data permanently
+   ```
+
+### GDPR Compliance
+
+If you're subject to GDPR or handling EU user data:
+
+1. **Data Subject Requests:**
+   - Export: Use database export commands above
+   - Delete: Use SQL commands to remove specific records
+   - Audit: All operations logged in application logs
+
+2. **Right to be Forgotten:**
+   ```bash
+   docker-compose exec db psql -U splants -d splants -c "DELETE FROM contents WHERE metadata->>'user_id' = 'USER_ID';"
+   ```
+
+3. **Data Processing Agreement:**
+   - Review OpenAI's [DPA](https://openai.com/policies/data-processing-addendum)
+   - Review Anthropic's privacy terms if using premium mode
+
+4. **Recommended Retention Policy:**
+   - Production content: 2 years
+   - Test content: 90 days
+   - Analytics data: 1 year
+   - Logs: 30 days
+
+### Backup Strategy
+
+**Recommended Backup Schedule:**
+- **Daily:** Automated database backup (use cron jobs)
+- **Weekly:** Full system backup (database + configuration)
+- **Monthly:** Archive backup to external storage
+
+**Example Cron Job for Daily Backups:**
+```bash
+# Add to crontab: crontab -e
+0 2 * * * cd /path/to/SPLANTS && make backup
+```
+
+**Backup Verification:**
+```bash
+# Test restore on a copy
+docker-compose down
+make restore file=backups/latest-backup.sql.gz
+make test  # Verify system works
+```
+
+---
+
 ## License
 
 This project is open source and available under the MIT License.
@@ -1412,11 +1576,15 @@ Built with:
 
 ##  Version History
 
-**v2.1 - Current**
+**v2.1 - Current (2025-11-12)**
 -  Complete system with all features
 -  Comprehensive documentation
 -  Beginner-friendly setup
 -  Cost controls and analytics
+-  Security best practices documentation
+-  Data retention and privacy policy
+
+For detailed version history and changelog, see [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
@@ -1464,4 +1632,4 @@ Diagnostics:
 
 ---
 
-**Note:** Reference this README and the API documentation at `http://localhost:8080/docs` for detailed information on all system features and capabilities.
+**Note:** Reference this README and the API documentation at `http://localhost:3000/api/docs` for detailed information on all system features and capabilities.
