@@ -986,10 +986,10 @@ DAILY_API_LIMIT=100
 
 ---
 
-### Problem: Port 8080 already in use
+### Problem: Port 3000 already in use
 
 **Symptoms:**
-- Error: "Port 8080 is already in use"
+- Error: "Port 3000 is already in use"
 
 **Solution:**
 
@@ -998,22 +998,22 @@ DAILY_API_LIMIT=100
 Edit `docker-compose.yml`:
 ```yaml
 ports:
-  - "8081:8080"  # Change 8080 to 8081 (or any free port)
+  - "3001:3000"  # Change 3000 to 3001 (or any free port)
 ```
 
-Then access at `http://localhost:8081`
+Then access at `http://localhost:3001`
 
-**Option 2: Stop the other service using port 8080**
+**Option 2: Stop the other service using port 3000**
 
 **Windows:**
 ```bash
-netstat -ano | findstr :8080
+netstat -ano | findstr :3000
 taskkill /PID [PID_NUMBER] /F
 ```
 
 **Mac/Linux:**
 ```bash
-lsof -i :8080
+lsof -i :3000
 kill -9 [PID]
 ```
 
