@@ -164,6 +164,6 @@ The system includes `test_api.py` for API validation. When adding endpoints:
 ## Brand and Content Specifics
 
 SPLANTS focuses on Jackson Pollock-inspired paint-splatter pants. When working on content generation:
-- Maintain artistic/creative tone in marketing copy
+- Maintain contemplative/creative tone in marketing copy
 - Reference paint splatters, artistic expression, custom pants themes
-- Use vibrant, energetic language matching the artistic brand
+- Use eccentric vibrant language matching the artistic brand
