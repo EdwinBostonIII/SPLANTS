@@ -1607,7 +1607,6 @@ Structure: Headline, dateline, lead paragraph, body, boilerplate, contact info."
                     VALUES ($1, $2, $3, $4, $5, $6, $7)
                 ''', model, tokens, cost, request_type, content_id, success, error_message)
         except Exception as e:
-            logger.error(f"Failed to track API usage
             logger.error(f"Failed to track API usage: {e}")
     
     async def _generate_ab_variants(
