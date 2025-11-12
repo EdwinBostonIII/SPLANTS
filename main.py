@@ -108,34 +108,34 @@ app.add_middleware(
 
 # REQUIRED - Core System ($30/month infrastructure)
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://splants:password@db:5432/splants")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")  # Required for AI generation
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")  # Required for AI generation
 API_KEY = os.getenv("API_KEY", "change-this-to-a-secure-key")  # Your API key for authentication
 
 # OPTIONAL - Multi-Model Enhancement
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")  # For premium multi-model
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")  # For premium multi-model
 
 # FREE OPTIONAL ENHANCEMENT: Cost Control
 MONTHLY_AI_BUDGET = float(os.getenv("MONTHLY_AI_BUDGET", "0"))  # Set to 0 for unlimited
 DAILY_API_LIMIT = int(os.getenv("DAILY_API_LIMIT", "0"))  # Set to 0 for unlimited
 
 # PAID OPTIONAL ENHANCEMENT: Redis Caching (+$10-15/month)
-REDIS_URL = os.getenv("REDIS_URL")  # Set this to enable caching
+REDIS_URL = os.getenv("REDIS_URL", "")  # Set this to enable caching
 CACHE_ENABLED = bool(REDIS_URL)
 
 # FREE OPTIONAL ENHANCEMENT: Webhooks
-WEBHOOK_CONTENT_GENERATED = os.getenv("WEBHOOK_CONTENT_GENERATED_URL")
-WEBHOOK_CONTENT_PUBLISHED = os.getenv("WEBHOOK_CONTENT_PUBLISHED_URL")
-WEBHOOK_DAILY_REPORT = os.getenv("WEBHOOK_DAILY_REPORT_URL")
+WEBHOOK_CONTENT_GENERATED = os.getenv("WEBHOOK_CONTENT_GENERATED_URL", "")
+WEBHOOK_CONTENT_PUBLISHED = os.getenv("WEBHOOK_CONTENT_PUBLISHED_URL", "")
+WEBHOOK_DAILY_REPORT = os.getenv("WEBHOOK_DAILY_REPORT_URL", "")
 
 # PAID OPTIONAL ENHANCEMENT: Social Media Auto-Publishing (Costs vary)
 # These are for automatic posting to platforms (optional)
-TWITTER_API_KEY = os.getenv("TWITTER_API_KEY")
-TWITTER_API_SECRET = os.getenv("TWITTER_API_SECRET")
-TWITTER_ACCESS_TOKEN = os.getenv("TWITTER_ACCESS_TOKEN")
-TWITTER_ACCESS_SECRET = os.getenv("TWITTER_ACCESS_SECRET")
+TWITTER_API_KEY = os.getenv("TWITTER_API_KEY", "")
+TWITTER_API_SECRET = os.getenv("TWITTER_API_SECRET", "")
+TWITTER_ACCESS_TOKEN = os.getenv("TWITTER_ACCESS_TOKEN", "")
+TWITTER_ACCESS_SECRET = os.getenv("TWITTER_ACCESS_SECRET", "")
 
-LINKEDIN_CLIENT_ID = os.getenv("LINKEDIN_CLIENT_ID")
-LINKEDIN_CLIENT_SECRET = os.getenv("LINKEDIN_CLIENT_SECRET")
+LINKEDIN_CLIENT_ID = os.getenv("LINKEDIN_CLIENT_ID", "")
+LINKEDIN_CLIENT_SECRET = os.getenv("LINKEDIN_CLIENT_SECRET", "")
 
 # Application settings
 MAX_CONTENT_LENGTH = int(os.getenv("MAX_CONTENT_LENGTH", "5000"))  # Max words per generation
