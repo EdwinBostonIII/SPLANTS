@@ -1,0 +1,130 @@
+name: Feature Implementation Check
+
+on:
+  pull_request:
+    paths:
+      - 'main.py'
+      - 'web/src/**'
+      - 'test_api.py'
+
+jobs:
+  check-feature-standards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Check Feature Categorization
+        run: |
+          echo "Checking for proper feature categorization..."
+          
+          # Check for category comments in main.py
+          if ! grep -E "# (CORE FEATURE|FREE OPTIONAL ENHANCEMENT|PAID OPTIONAL ENHANCEMENT)" main.py; then
+            echo "❌ No feature categorization found in main.py"
+            exit 1
+          fi
+          
+          echo "✅ Feature categorization found"
+      
+      - name: Check Startup Logging
+        run: |
+          echo "Checking for startup logging..."
+          
+          # Check for startup logging pattern
+          if ! grep -E "logger\.info\(.*✅.*Enabled" main.py; then
+            echo "⚠️ Warning: No startup logging found for enabled features"
+          fi
+          
+          if ! grep -E "logger\.info\(.*❌.*Disabled" main.py; then
+            echo "⚠️ Warning: No startup logging found for disabled features"
+          fi
+          
+          echo "✅ Startup logging check complete"
+      
+      - name: Check Environment Variables
+        run: |
+          echo "Checking for environment variable patterns..."
+          
+          # Check for safe defaults
+          if grep -E "os\.getenv\([^,]+\)$" main.py; then
+            echo "❌ Environment variables without defaults found"
+            exit 1
+          fi
+          
+          echo "✅ All environment variables have defaults"
+      
+      - name: Check API Authentication
+        run: |
+          echo "Checking API endpoint authentication..."
+          
+          # Check that API endpoints use verify_api_key
+          if grep -E "@app\.(get|post|put|delete|patch).*\n.*async def" main.py | grep -v "health" | grep -v "root"; then
+            if ! grep -A5 "@app\.(get|post|put|delete|patch)" main.py | grep "verify_api_key"; then
+              echo "⚠️ Warning: Some endpoints may not have authentication"
+            fi
+          fi
+          
+          echo "✅ API authentication check complete"
+      
+      - name: Check Database Indexes
+        run: |
+          echo "Checking for database indexes..."
+          
+          # Check for index creation on new tables
+          if grep "CREATE TABLE" main.py; then
+            if ! grep -A20 "CREATE TABLE" main.py | grep "CREATE INDEX"; then
+              echo "⚠️ Warning: Tables without indexes found"
+            fi
+          fi
+          
+          echo "✅ Database index check complete"
+      
+      - name: Check Test Coverage
+        run: |
+          echo "Checking for test coverage..."
+          
+          # Check if test file exists and has tests
+          if [ -f "test_api.py" ]; then
+            if grep -E "def test_.*\(\):" test_api.py; then
+              echo "✅ Tests found"
+            else
+              echo "⚠️ Warning: No test functions found"
+            fi
+          else
+            echo "❌ test_api.py not found"
+            exit 1
+          fi
+      
+      - name: Generate Feature Report
+        run: |
+          echo "# Feature Implementation Report" > feature-report.md
+          echo "" >> feature-report.md
+          echo "## Feature Categories Found" >> feature-report.md
+          grep -E "# (CORE FEATURE|FREE OPTIONAL ENHANCEMENT|PAID OPTIONAL ENHANCEMENT)" main.py | head -10 >> feature-report.md || true
+          echo "" >> feature-report.md
+          echo "## Environment Variables" >> feature-report.md
+          grep -E "os\.getenv\(" main.py | grep -E "_ENABLED|_API_KEY|_URL" | head -10 >> feature-report.md || true
+          echo "" >> feature-report.md
+          echo "## API Endpoints" >> feature-report.md
+          grep -E "@app\.(get|post|put|delete|patch)" main.py | head -10 >> feature-report.md || true
+          
+          cat feature-report.md
+      
+      - name: Comment PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('feature-report.md', 'utf8');
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
