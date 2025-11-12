@@ -10,37 +10,51 @@ help: ## Show this help message
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: setup
-setup: ## Initial setup - copy env file and build
-	@echo "Setting up SPLANTS Marketing Engine..."
-	@if [ ! -f .env ]; then cp .env.example .env; echo "Created .env file - please add your API keys"; fi
-	@docker-compose build
-	@echo "Setup complete! Run 'make start' to begin"
-
 .PHONY: start
-start: ## Start all services
+start: ## First-time setup and start (runs interactive wizard)
 	@echo "Starting SPLANTS Marketing Engine..."
-	@docker-compose up -d
-	@echo "Services starting... Access at http://localhost:8080"
-	@echo "API Docs: http://localhost:8080/docs"
+	@if [ ! -f .env ]; then \
+		./scripts_quick-start.sh; \
+	else \
+		echo "Configuration exists. Starting services..."; \
+		docker-compose up -d; \
+		echo ""; \
+		echo "✅ Services started!"; \
+		echo "   Web UI:    http://localhost:3000"; \
+		echo "   API Docs:  http://localhost:3000/api/docs"; \
+	fi
+
+.PHONY: setup
+setup: ## Alias for 'start' - runs interactive setup wizard
+	@$(MAKE) start
 
 .PHONY: stop
 stop: ## Stop all services
 	@echo "Stopping services..."
 	@docker-compose down
+	@echo "✅ Services stopped"
 
 .PHONY: restart
 restart: ## Restart all services
 	@echo "Restarting services..."
 	@docker-compose restart
+	@echo "✅ Services restarted"
 
 .PHONY: logs
-logs: ## View application logs
+logs: ## View application logs (follow mode)
+	@docker-compose logs -f
+
+.PHONY: logs-app
+logs-app: ## View app service logs only
 	@docker-compose logs -f app
 
-.PHONY: logs-all
-logs-all: ## View all service logs
-	@docker-compose logs -f
+.PHONY: logs-web
+logs-web: ## View web service logs only
+	@docker-compose logs -f web
+
+.PHONY: logs-db
+logs-db: ## View database logs only
+	@docker-compose logs -f db
 
 .PHONY: status
 status: ## Check service status
@@ -49,14 +63,27 @@ status: ## Check service status
 .PHONY: clean
 clean: ## Remove containers and volumes (WARNING: deletes data)
 	@echo "WARNING: This will delete all data!"
-	@read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] && docker-compose down -v
+	@read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] && docker-compose down -v || echo "Cancelled"
 
 .PHONY: backup
 backup: ## Backup database
-	@echo "Creating database backup..."
-	@mkdir -p backups
-	@docker-compose exec db pg_dump -U splants splants > backups/backup-$$(date +%Y%m%d-%H%M%S).sql
-	@echo "Backup saved to backups/"
+	@./scripts_backup.sh
+
+.PHONY: restore
+restore: ## Restore database from backup
+	@if [ -z "$(file)" ]; then \
+		echo "Usage: make restore file=<backup-file>"; \
+		echo ""; \
+		echo "Available backups:"; \
+		ls -la ./backups/*.sql.gz 2>/dev/null || echo "No backups found"; \
+	else \
+		./scripts_restore.sh $(file); \
+	fi
+
+.PHONY: test
+test: ## Run API tests (validates backend-frontend contract)
+	@echo "Running API tests..."
+	@python3 test_api.py
 
 .PHONY: shell
 shell: ## Open Python shell in app container
@@ -66,33 +93,29 @@ shell: ## Open Python shell in app container
 db-shell: ## Open PostgreSQL shell
 	@docker-compose exec db psql -U splants splants
 
-.PHONY: test-api
-test-api: ## Test API with sample request
-	@echo "Testing content generation..."
-	@curl -X POST "http://localhost:8080/v1/generate" \
-		-H "X-API-Key: change-this-to-a-secure-password-123" \
-		-H "Content-Type: application/json" \
-		-d '{"content_type": "blog", "topic": "Test: 5 AI Tips", "tone": "professional", "length": 200}'
-
 .PHONY: update
 update: ## Pull latest changes and rebuild
 	@echo "Updating SPLANTS Marketing Engine..."
-	@docker-compose pull
+	@git pull
 	@docker-compose build --no-cache
 	@docker-compose up -d
-	@echo "Update complete!"
+	@echo "✅ Update complete!"
 
 .PHONY: dev
-dev: ## Start in development mode with hot-reload
+dev: ## Start in development mode (attached, with logs)
 	@docker-compose up
 
-.PHONY: redis-enable
-redis-enable: ## Enable Redis caching
-	@echo "Enabling Redis cache..."
-	@sed -i.bak 's/# redis:/redis:/g' docker-compose.yml
-	@sed -i.bak 's/# redis_data:/redis_data:/g' docker-compose.yml
-	@echo "Redis enabled. Add REDIS_URL=redis://redis:6379 to .env"
-	@echo "Run 'make restart' to apply changes"
+.PHONY: build
+build: ## Build Docker images
+	@echo "Building Docker images..."
+	@docker-compose build
+	@echo "✅ Build complete"
+
+.PHONY: rebuild
+rebuild: ## Rebuild Docker images (no cache)
+	@echo "Rebuilding Docker images (no cache)..."
+	@docker-compose build --no-cache
+	@echo "✅ Rebuild complete"
 
 .PHONY: monitor
 monitor: ## Monitor resource usage

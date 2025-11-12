@@ -287,114 +287,121 @@ cd SPLANTS
 
 ##  First-Time Setup
 
-Now you'll configure the system with your API keys.
+The SPLANTS Marketing Engine now includes an **interactive setup wizard** that guides you through the entire configuration process. No need to manually edit files!
 
-### Step 1: Create Your Configuration File
-
-The system needs to know your API keys and preferences.
-
-1. **Find the `.env.example` file** in the SPLANTS folder
-
-2. **Make a copy and rename it:**
-   - **Windows:** Right-click → Copy → Rename to `.env`
-   - **Mac/Linux:** In Terminal:
-   ```bash
-   cp .env.example .env
-   ```
-
-3. **Open `.env` in your text editor**
-
-### Step 2: Add Your API Keys
-
-You need to edit two important lines:
-
-**Find this line:**
-```
-OPENAI_API_KEY=sk-your-api-key-here
-```
-
-**Replace with your actual key:**
-```
-OPENAI_API_KEY=sk-proj-abc123XYZ...
-```
-
-**Find this line:**
-```
-API_KEY=change-this-to-a-secure-password-123
-```
-
-**Replace with a strong password** (this protects your system from unauthorized use):
-```
-API_KEY=MySecure!Password789
-```
-
-** Password Tips:**
-- At least 12 characters
-- Mix of letters, numbers, and symbols
-- Don't use common words
-- Example: `Biz2024!Market#Ai`
-
-### Step 3: Set Your Budget (Optional but Recommended)
-
-To prevent surprise charges, set a spending limit:
-
-**Find this line:**
-```
-MONTHLY_AI_BUDGET=50
-```
-
-**This means:**
-- The system will stop generating content if costs reach $50/month
-- You won't accidentally overspend
-- You can adjust this anytime
-
-**Recommended budgets:**
-- **Light use (50-100 pieces/month):** $30
-- **Medium use (200-300 pieces/month):** $50
-- **Heavy use (500+ pieces/month):** $100
-
-### Step 4: Save the File
-
-- **Windows:** File → Save (or Ctrl+S)
-- **Mac:** File → Save (or Cmd+S)
-- **Linux:** Ctrl+O, then Enter
-
----
-
-##  Starting the System
-
-### First Time Launch
+### Quick Start (Recommended)
 
 1. **Open Terminal/Command Prompt** in the SPLANTS folder:
    - **Windows:** Right-click in the folder → "Open in Terminal" or "Open Command Prompt here"
    - **Mac:** Right-click folder → Services → "New Terminal at Folder"
    - **Linux:** Right-click → "Open in Terminal"
 
-2. **Run the quick-start script:**
+2. **Run the setup wizard:**
 
 ```bash
-# Make the script executable (Mac/Linux only)
-chmod +x scripts_quick-start.sh
-
-# Run the script
-./scripts_quick-start.sh
+make start
 ```
 
-**For Windows (if the script doesn't work):**
-```bash
-docker-compose up -d
-```
+That's it! The wizard will:
+- ✅ Check if Docker is installed and running
+- ✅ Ask for your OpenAI API key
+- ✅ Generate a secure system API key (or let you provide your own)
+- ✅ Set up your monthly budget preference
+- ✅ Create the `.env` configuration file automatically
+- ✅ Build and start all services
+- ✅ Show you your generated API key (save it!)
 
-3. **Wait 30-60 seconds** for everything to start
-
-4. **Check if it's running:**
+3. **Access the system:**
 
 Open your web browser and go to:
 ```
 http://localhost:3000
 ```
 
-**You should see:** A welcome page with system information! 
+**You should see:** The SPLANTS Marketing Engine web interface! 
+
+---
+
+### Manual Setup (Alternative Method)
+
+If you prefer to configure manually or the wizard doesn't work:
+
+1. **Create Your Configuration File**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Edit the `.env` file** and add:
+   - Your OpenAI API key (from https://platform.openai.com/api-keys)
+   - A secure system API key (at least 12 characters)
+   - Your monthly budget (optional, recommended: $50)
+
+3. **Start the system:**
+
+   ```bash
+   docker-compose up -d
+   ```
+
+---
+
+##  Managing the System
+
+The Makefile provides simple commands for all operations:
+
+### Essential Commands
+
+```bash
+make start     # First-time setup and start (runs interactive wizard)
+make stop      # Stop all services
+make restart   # Restart all services
+make logs      # View application logs (live)
+make status    # Check service status
+make test      # Run API tests to verify everything works
+```
+
+### Maintenance Commands
+
+```bash
+make backup              # Backup database
+make restore file=<file> # Restore database from backup
+make update              # Pull latest changes and rebuild
+make clean               # Remove all data (WARNING: deletes everything!)
+```
+
+### Development Commands
+
+```bash
+make dev       # Start in development mode (with logs)
+make build     # Build Docker images
+make rebuild   # Rebuild Docker images (no cache)
+make monitor   # Monitor resource usage
+```
+
+### Troubleshooting
+
+If something isn't working:
+
+1. **Run the test suite:**
+   ```bash
+   make test
+   ```
+   
+   This validates the API contract between backend and frontend. If tests pass, the problem is likely in the frontend. If they fail, it's in the backend.
+
+2. **Check the logs:**
+   ```bash
+   make logs
+   ```
+
+3. **Verify services are running:**
+   ```bash
+   make status
+   ```
+
+4. **See detailed troubleshooting:**
+   - [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - Common problems and solutions
+   - [FAQ.md](FAQ.md) - Frequently asked questions
 
 ---
 
@@ -738,12 +745,52 @@ You → [Web Browser] → [FastAPI] → [GPT-4 AI] → [PostgreSQL Database]
 
 ---
 
-### Task 7: Stop the System
+### Task 7: Configure Webhooks for Automation
+
+**Goal:** Set up automatic notifications and integrations with Zapier, Make, or other services
+
+**What are webhooks?**
+- Automatic notifications sent when events happen in SPLANTS
+- Connect to thousands of apps via Zapier, Make, or IFTTT
+- No code required!
+
+**Steps:**
+
+1. **Go to the Settings page:**
+   - Open `http://localhost:3000` in your browser
+   - Click on "Budget" in the navigation menu
+
+2. **Scroll to "Webhook Integration" section**
+
+3. **Get a webhook URL from your automation service:**
+   - **Zapier:** Create a new Zap → Add "Webhooks by Zapier" trigger → Copy the URL
+   - **Make:** Add "Webhooks" module → Copy the webhook URL
+   - **IFTTT:** Create a new applet → Add "Webhooks" trigger → Copy the URL
+
+4. **Paste the URL into SPLANTS:**
+   - **Content Generated Webhook:** Triggered every time new content is created
+   - **Content Published Webhook:** Triggered when content is published to a platform
+   - **Daily Report Webhook:** Triggered once per day with usage summary
+
+5. **Click "Save Webhook Settings"**
+
+**Example Automations:**
+- 📧 Send email notification when content is generated
+- 📊 Add content to Google Sheets for tracking
+- 💬 Post to Slack when new content is ready
+- 📅 Create calendar events for scheduled posts
+- 🎯 Trigger marketing campaigns based on content creation
+
+**No restart required!** Webhook settings are applied immediately.
+
+---
+
+### Task 8: Stop the System
 
 **When you're done working:**
 
 ```bash
-docker-compose down
+make stop
 ```
 
 **This will:**
@@ -753,12 +800,12 @@ docker-compose down
 
 ---
 
-### Task 8: Start the System Again
+### Task 9: Start the System Again
 
 **When you want to use it again:**
 
 ```bash
-docker-compose up -d
+make start
 ```
 
 **This will:**
@@ -768,29 +815,25 @@ docker-compose up -d
 
 ---
 
-### Task 9: Backup Your Content
+### Task 10: Backup Your Content
 
 **To save all your content:**
 
 ```bash
-# Run the backup script
-./scripts_backup.sh
+make backup
 ```
 
-**This creates a backup in the `backups/` folder**
-
-**OR manually:**
-```bash
-docker-compose exec db pg_dump -U splants splants > my_backup.sql
-```
+**This creates a compressed backup in the `backups/` folder**
 
 ---
 
-### Task 10: Restore from Backup
+### Task 11: Restore from Backup
 
 **To restore content from a backup:**
 
 ```bash
+make restore file=backups/splants_backup_20240101_120000.sql.gz
+```
 ./scripts_restore.sh backups/your-backup-file.sql.gz
 ```
 

@@ -8,13 +8,46 @@ This guide provides solutions to common system issues. Locate the relevant probl
 
 ## Quick Diagnostic Checklist
 
-Verify these basic requirements before proceeding to specific problem categories:
+Before diving into specific problems, try these quick diagnostic steps:
 
-- [ ] Docker service is running
-- [ ] Services status: Run `docker-compose ps`
-- [ ] System initialization: Wait 60 seconds after starting
-- [ ] Configuration file (`.env`) is properly configured
-- [ ] Network connectivity is established
+### Step 1: Run the Automated Test Suite
+
+The fastest way to diagnose issues is to run the test suite:
+
+```bash
+make test
+```
+
+**What this does:**
+- Tests all major API endpoints
+- Validates backend-frontend contract
+- Checks if services are responding correctly
+- Shows you exactly which components are failing
+
+**Interpreting results:**
+- ✅ **All tests pass:** Your backend is working correctly. If you have UI issues, the problem is in the frontend.
+- ❌ **Tests fail:** The problem is in the backend. Check the error messages to see which endpoint is failing.
+- ❌ **Cannot connect:** Services aren't running. Run `make start` first.
+
+### Step 2: Check Basic Requirements
+
+Verify these requirements before proceeding:
+
+- [ ] Docker service is running (`docker --version` should show version)
+- [ ] Services are running: Run `make status` or `docker-compose ps`
+- [ ] Wait 60 seconds after starting for full initialization
+- [ ] Configuration file (`.env`) exists and is properly configured
+- [ ] Network connectivity is established (check internet connection)
+
+### Step 3: Check Service Logs
+
+If tests fail, check the logs:
+
+```bash
+make logs
+```
+
+Look for error messages that indicate what went wrong.
 
 ---
 
@@ -22,14 +55,15 @@ Verify these basic requirements before proceeding to specific problem categories
 
 1. [Installation Problems](#installation-problems)
 2. [Docker Issues](#docker-issues)
-3. [API Connection Problems](#api-connection-problems)
-4. [Authentication Errors](#authentication-errors)
-5. [Content Generation Failures](#content-generation-failures)
-6. [Database Problems](#database-problems)
-7. [Performance Issues](#performance-issues)
-8. [Cost/Billing Issues](#costbilling-issues)
-9. [Configuration Problems](#configuration-problems)
-10. [Advanced Troubleshooting](#advanced-troubleshooting)
+3. [UI Not Working](#ui-not-working)
+4. [API Connection Problems](#api-connection-problems)
+5. [Authentication Errors](#authentication-errors)
+6. [Content Generation Failures](#content-generation-failures)
+7. [Database Problems](#database-problems)
+8. [Performance Issues](#performance-issues)
+9. [Cost/Billing Issues](#costbilling-issues)
+10. [Configuration Problems](#configuration-problems)
+11. [Advanced Troubleshooting](#advanced-troubleshooting)
 
 ---
 
@@ -284,14 +318,79 @@ sudo apt install docker-compose
 
 ---
 
+## UI Not Working
+
+### Problem: Web UI not loading or showing errors
+
+**Symptoms:**
+- Browser can't connect to `http://localhost:3000`
+- White screen or error messages in the UI
+- Features not working in the web interface
+
+**Diagnostic Command:**
+```bash
+make test
+```
+
+**Interpreting Results:**
+
+**If tests PASS:**
+- ✅ Backend is working correctly
+- ❌ Problem is in the frontend/web service
+- Check web service logs: `make logs-web`
+- Verify web service is running: `make status`
+
+**If tests FAIL:**
+- ❌ Backend has issues
+- Look at which tests failed to identify the problem
+- Common failures:
+  - **Connection refused:** Services not running (`make start`)
+  - **401 Unauthorized:** API key mismatch (check .env file)
+  - **500 Internal Server Error:** Check backend logs (`make logs-app`)
+
+**Solutions:**
+
+**Solution 1: Restart Services**
+```bash
+make restart
+```
+
+**Solution 2: Check All Services Running**
+```bash
+make status
+```
+
+You should see:
+- `db` - Up
+- `app` - Up  
+- `web` - Up
+
+**Solution 3: Check Logs for Errors**
+```bash
+# Check web service logs
+make logs-web
+
+# Check app service logs
+make logs-app
+```
+
+**Solution 4: Rebuild if Nothing Works**
+```bash
+make stop
+make rebuild
+make start
+```
+
+---
+
 ## API Connection Problems
 
-### Problem: "This site can't be reached" (localhost:8080)
+### Problem: "This site can't be reached" (localhost:3000)
 
 **Symptoms:**
 - Browser shows "This site can't be reached"
 - Or "ERR_CONNECTION_REFUSED"
-- Cannot access http://localhost:3000/api
+- Cannot access http://localhost:3000
 
 **Diagnostic Steps:**
 
