@@ -46,9 +46,10 @@ export default function SettingsPage() {
           webhook_content_published_url: settings.webhook_content_published_url?.value || fallbacks.webhook_content_published_url || '',
           webhook_daily_report_url: settings.webhook_daily_report_url?.value || fallbacks.webhook_daily_report_url || ''
         })
+      } else {
+        toast.error('Failed to load webhook settings')
       }
     } catch (error) {
-      console.error('Failed to load webhook settings:', error)
       toast.error('Failed to load webhook settings')
     } finally {
       setLoadingSettings(false)
@@ -74,7 +75,6 @@ export default function SettingsPage() {
         throw new Error('Failed to save settings')
       }
     } catch (error) {
-      console.error('Failed to save webhook settings:', error)
       toast.error('Failed to save webhook settings')
     } finally {
       setIsSaving(false)

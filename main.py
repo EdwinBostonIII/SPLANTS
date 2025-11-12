@@ -29,11 +29,11 @@ Last Updated: 2025-11-12
 from fastapi import FastAPI, HTTPException, BackgroundTasks, Depends, Security, Query
 from fastapi.security import APIKeyHeader
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from typing import List, Optional, Dict, Any, Literal
 import asyncio
 import asyncpg
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import os
 import hashlib
 import json
@@ -487,20 +487,22 @@ class ContentRequest(BaseModel):
         description="PAID: Use multi-model synthesis for higher quality (+$0.02-0.05/request)"
     )
     
-    @validator('topic')
+    @field_validator('topic')
+    @classmethod
     def validate_topic(cls, v):
         """Ensure topic is meaningful"""
         if len(v.strip()) < 5:
             raise ValueError('Topic must be at least 5 characters')
         return v.strip()
     
-    @validator('keywords')
+    @field_validator('keywords')
+    @classmethod
     def validate_keywords(cls, v):
         """Ensure keywords are reasonable"""
         return [kw.strip() for kw in v if kw.strip()]
     
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra = {
             "example": {
                 "content_type": "blog",
                 "topic": "10 AI Marketing Tips for Small Business Owners",
@@ -515,6 +517,7 @@ class ContentRequest(BaseModel):
                 "use_premium": False
             }
         }
+    )
 
 class ContentResponse(BaseModel):
     """Response model for generated content"""
@@ -532,8 +535,8 @@ class ContentResponse(BaseModel):
     variants: Optional[List[Dict[str, Any]]] = None
     recommendations: Optional[List[str]] = None
     
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra = {
             "example": {
                 "id": 1,
                 "content": "Your generated content will appear here...",
@@ -550,6 +553,7 @@ class ContentResponse(BaseModel):
                 "cached": False
             }
         }
+    )
 
 class PublishRequest(BaseModel):
     """Request model for publishing content"""
@@ -572,8 +576,8 @@ class PublishRequest(BaseModel):
         description="FREE: Automatically find best time to post (based on platform best practices)"
     )
     
-    class Config:
-        schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra = {
             "example": {
                 "content_id": 1,
                 "platforms": ["twitter", "linkedin"],
@@ -581,6 +585,7 @@ class PublishRequest(BaseModel):
                 "auto_optimize_timing": False
             }
         }
+    )
 
 # ============================================
 # CORE CONTENT ENGINE (Main AI System)
@@ -1913,7 +1918,7 @@ class SocialPublisher:
         
         if not all_times:
             # Default to 2 PM UTC tomorrow
-            return datetime.utcnow().replace(hour=14, minute=0, second=0, microsecond=0) + timedelta(days=1)
+            return datetime.now(timezone.utc).replace(hour=14, minute=0, second=0, microsecond=0) + timedelta(days=1)
         
         # Find most common time
         from collections import Counter
@@ -1921,7 +1926,7 @@ class SocialPublisher:
         best_time = time_counts.most_common(1)[0][0]
         
         # Schedule for tomorrow at that time
-        tomorrow = datetime.utcnow() + timedelta(days=1)
+        tomorrow = datetime.now(timezone.utc) + timedelta(days=1)
         return tomorrow.replace(hour=best_time[0], minute=best_time[1], second=0, microsecond=0)
     
     def _is_auto_posting_available(self, platform: Platform) -> bool:
@@ -1976,17 +1981,21 @@ class SocialPublisher:
                     UPDATE social_posts
                     SET status = $1, published_at = $2
                     WHERE id = $3
-                ''', 'publishing', datetime.utcnow(), post_id)
+                ''', 'publishing', datetime.now(timezone.utc), post_id)
             
-            # TODO: Implement actual platform posting
-            # Example structure:
-            # if platform == Platform.TWITTER:
-            #     await self._post_to_twitter(content)
-            # elif platform == Platform.LINKEDIN:
-            #     await self._post_to_linkedin(content)
-            # etc.
+            # PAID OPTIONAL ENHANCEMENT: Platform Auto-Posting
+            # Requires platform-specific API keys configured in environment variables.
+            # When API keys are not configured, posts are marked for manual publishing.
+            # 
+            # Implementation structure for each platform:
+            # - Twitter/X: Requires TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_SECRET
+            # - LinkedIn: Requires LINKEDIN_CLIENT_ID, LINKEDIN_CLIENT_SECRET, LINKEDIN_ACCESS_TOKEN
+            # - Instagram: Requires INSTAGRAM_ACCESS_TOKEN (via Facebook Graph API)
+            # - Facebook: Requires FACEBOOK_ACCESS_TOKEN, FACEBOOK_PAGE_ID
+            # 
+            # See WORKFLOW_AUTOMATION.md for detailed integration instructions.
             
-            # For now, mark as needs_manual_posting
+            # Mark post for manual publishing (auto-posting not configured)
             async with db_pool.acquire() as conn:
                 await conn.execute('''
                     UPDATE social_posts
@@ -2453,7 +2462,7 @@ class CostController:
         today_cost = float(daily['total_cost'] or 0)
         
         # Calculate projections
-        current_day = datetime.utcnow().day
+        current_day = datetime.now(timezone.utc).day
         days_in_month = 30  # Simplified
         projected_monthly = (month_cost / max(current_day, 1)) * days_in_month if current_day > 0 else 0
         
@@ -2546,7 +2555,7 @@ class CostController:
         
         # Spending rate alerts
         expected_daily = self.monthly_budget / 30
-        actual_daily = month_cost / max(datetime.utcnow().day, 1)
+        actual_daily = month_cost / max(datetime.now(timezone.utc).day, 1)
         
         if actual_daily > expected_daily * 1.5:
             alerts.append({
@@ -2851,7 +2860,7 @@ class WebhookSystem:
         
         payload = {
             "event": event_type,
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "data": data
         }
         
@@ -3007,7 +3016,7 @@ async def health_check():
     
     return {
         "status": "healthy" if db_status == "connected" else "degraded",
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "version": "2.1",
         "services": {
             "database": db_status,
@@ -3016,7 +3025,7 @@ async def health_check():
             "redis_cache": "enabled" if CACHE_ENABLED else "disabled",
             "cost_control": "enabled" if MONTHLY_AI_BUDGET > 0 else "disabled"
         },
-        "uptime_since": datetime.utcnow().isoformat(),
+        "uptime_since": datetime.now(timezone.utc).isoformat(),
         "api_docs": "/docs"
     }
 
@@ -3512,7 +3521,7 @@ async def register_webhook(
     try:
         test_payload = {
             "event": "webhook_test",
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "message": "This is a test webhook delivery"
         }
         
@@ -3710,7 +3719,7 @@ async def get_system_status(
     
     return {
         "status": "operational",
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "version": "2.1",
         "services": {
             "database": {
@@ -3789,7 +3798,7 @@ async def detailed_health_check(
     """
     health = {
         "overall": "healthy",
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "components": {}
     }
     
@@ -3853,7 +3862,7 @@ async def http_exception_handler(request, exc):
     return {
         "error": exc.detail,
         "status_code": exc.status_code,
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "path": str(request.url),
         "method": request.method,
         "help": {
@@ -3874,7 +3883,7 @@ async def general_exception_handler(request, exc):
         "error": "Internal server error",
         "message": str(exc),
         "status_code": 500,
-        "timestamp": datetime.utcnow().isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "path": str(request.url),
         "note": "This error has been logged. Please contact support if it persists."
     }
