@@ -10,6 +10,10 @@ This index provides navigation to all system documentation components.
 
 ## Quick Navigation
 
+### Access the System
+- **Web UI:** http://localhost:3000 (Recommended - User-friendly interface)
+- **API Documentation:** http://localhost:3000/api/docs
+
 ### Initial Setup
 Reference: [README.md](#readmemd) → [SETUP_GUIDE.md](#setup_guidemd) → [QUICKSTART_WINDOWS.md](#quickstart_windowsmd)
 

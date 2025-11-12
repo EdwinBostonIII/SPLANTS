@@ -58,3 +58,10 @@ htmlcov/
 *.bak
 backup/
 backups/
+
+# Node.js / React (Web UI)
+web/node_modules/
+web/dist/
+web/.vite/
+web/.npm/
+web/.cache/

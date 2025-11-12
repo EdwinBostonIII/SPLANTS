@@ -13,12 +13,12 @@ X-API-Key: your-api-key-here
 ### 2. Base URL
 
 ```
-http://localhost:8080
+http://localhost:3000/api
 ```
 
 ### 3. Interactive Documentation
 
-Visit `http://localhost:8080/docs` for interactive Swagger UI documentation.
+Visit `http://localhost:3000/api/docs` for interactive Swagger UI documentation.
 
 ## Core Endpoints
 
@@ -250,7 +250,7 @@ Events sent:
 import requests
 
 API_KEY = "your-api-key"
-BASE_URL = "http://localhost:8080"
+BASE_URL = "http://localhost:3000/api"
 
 headers = {
     "X-API-Key": API_KEY,

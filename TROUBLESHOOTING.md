@@ -291,7 +291,7 @@ sudo apt install docker-compose
 **Symptoms:**
 - Browser shows "This site can't be reached"
 - Or "ERR_CONNECTION_REFUSED"
-- Cannot access http://localhost:8080
+- Cannot access http://localhost:3000/api
 
 **Diagnostic Steps:**
 
@@ -346,7 +346,7 @@ See [Database Problems](#database-problems) section.
 
 Instead of main page, try:
 ```
-http://localhost:8080/health
+http://localhost:3000/api/health
 ```
 
 If this works but main page doesn't, it's a browser cache issue.
@@ -472,7 +472,7 @@ Make sure you're including the header:
 
 **Full example:**
 ```bash
-curl -X POST "http://localhost:8080/v1/generate" \
+curl -X POST "http://localhost:3000/api/v1/generate" \
   -H "X-API-Key: MyBusinessMarketing2024" \
   -H "Content-Type: application/json" \
   -d '{"content_type":"blog","topic":"Test"}'
@@ -523,7 +523,7 @@ OPENAI_API_KEY=sk-proj-abc123...
 
 **Solution 3: Verify in System Status**
 
-Go to: http://localhost:8080/v1/system/status
+Go to: http://localhost:3000/api/v1/system/status
 
 Look for:
 ```json
@@ -648,7 +648,7 @@ The budget resets on the 1st of each month.
 
 **Solution 3: Check Current Usage**
 
-Go to: http://localhost:8080/v1/costs/usage
+Go to: http://localhost:3000/api/v1/costs/usage
 
 See how much you've actually spent and when it resets.
 
@@ -720,7 +720,7 @@ Sometimes you just get a "bad roll". Generate again!
 
 Templates provide proven structures:
 
-1. Get templates: http://localhost:8080/v1/templates
+1. Get templates: http://localhost:3000/api/v1/templates
 2. Choose one (e.g., "blog_listicle")
 3. Generate using template
 
@@ -1012,7 +1012,7 @@ Advanced - see Docker volume documentation.
 
 **Check Your Usage:**
 
-Go to: http://localhost:8080/v1/costs/usage
+Go to: http://localhost:3000/api/v1/costs/usage
 
 See:
 - Total monthly cost
@@ -1065,7 +1065,7 @@ Cost drops 90%, but quality drops too.
 
 Check costs daily:
 ```
-http://localhost:8080/v1/costs/usage
+http://localhost:3000/api/v1/costs/usage
 ```
 
 **Solution 5: Set OpenAI Limits**
@@ -1286,17 +1286,17 @@ Use this only as last resort!
 
 **Quick Health Check:**
 ```
-http://localhost:8080/health
+http://localhost:3000/api/health
 ```
 
 **Detailed System Status:**
 ```
-http://localhost:8080/v1/system/status
+http://localhost:3000/api/v1/system/status
 ```
 
 **Detailed Health:**
 ```
-http://localhost:8080/v1/system/health/detailed
+http://localhost:3000/api/v1/system/health/detailed
 ```
 
 ---
@@ -1387,7 +1387,7 @@ Gather this information:
 **2. Monitor Costs:**
 ```bash
 # Check daily
-curl http://localhost:8080/v1/costs/usage
+curl http://localhost:3000/api/v1/costs/usage
 ```
 
 **3. Keep Docker Updated:**

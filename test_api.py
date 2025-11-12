@@ -10,7 +10,7 @@ import time
 from typing import Dict, Any
 
 # Configuration
-BASE_URL = "http://localhost:8080"
+BASE_URL = "http://localhost:3000/api"
 API_KEY = "change-this-to-a-secure-password-123"  # Change this to match your .env
 
 # Headers

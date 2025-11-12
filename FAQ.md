@@ -37,7 +37,7 @@ This document addresses frequently asked questions about the SPLANTS Marketing E
 
 ### Do I need to know how to code?
 
-**Answer:** No programming knowledge is required. The system provides a web interface at `http://localhost:8080/docs` for all operations. Configuration requires basic terminal command execution, which is documented in the setup guide.
+**Answer:** No programming knowledge is required. The system provides a web interface at `http://localhost:3000/api/docs` for all operations. Configuration requires basic terminal command execution, which is documented in the setup guide.
 
 ---
 
@@ -219,7 +219,7 @@ DAILY_API_LIMIT=100       # Max 100 requests/day
 ```
 
 **4. Monitor Daily:**
-- Check: `http://localhost:8080/v1/costs/usage`
+- Check: `http://localhost:3000/api/v1/costs/usage`
 - Review weekly spending
 - Adjust as needed
 
@@ -533,7 +533,7 @@ All three do the same thing, just different interfaces.
 - **localhost:8080** = "Port 8080 on my computer"
 
 **When to use:**
-Running on your computer: `http://localhost:8080`
+Running on your computer: `http://localhost:3000/api`
 Running on a server: `http://your-server-ip:8080`
 
 **Why 8080:**
@@ -894,7 +894,7 @@ Better to post consistently than sporadically. Use SPLANTS to maintain consisten
    - Check credit balance at platform.openai.com
 
 2. **Budget limit reached**
-   - Check: `http://localhost:8080/v1/costs/usage`
+   - Check: `http://localhost:3000/api/v1/costs/usage`
    - Increase MONTHLY_AI_BUDGET if needed
 
 3. **Services not running**
