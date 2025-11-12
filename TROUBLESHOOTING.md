@@ -10,6 +10,41 @@ This guide provides solutions to common system issues. Locate the relevant probl
 
 Before diving into specific problems, try these quick diagnostic steps:
 
+### Step 0: Run Automated Verification Scripts
+
+SPLANTS includes comprehensive diagnostic scripts to identify issues:
+
+#### For Installation Issues (Before Setup):
+
+```bash
+./scripts_check-system.sh
+```
+
+This checks:
+- Operating system compatibility
+- Docker installation and status
+- System resources (RAM, disk space)
+- Network connectivity
+- Port availability
+
+#### For Runtime Issues (After Setup):
+
+```bash
+./scripts_verify-installation.sh
+```
+
+This validates:
+- Configuration file validity
+- Container status
+- Service health
+- API functionality
+- Database connectivity
+- Recent error logs
+
+**Both scripts provide specific remediation steps for any failures.**
+
+---
+
 ### Step 1: Run the Automated Test Suite
 
 The fastest way to diagnose issues is to run the test suite:
@@ -34,7 +69,7 @@ make test
 Verify these requirements before proceeding:
 
 - [ ] Docker service is running (`docker --version` should show version)
-- [ ] Services are running: Run `make status` or `docker-compose ps`
+- [ ] Services are running: Run `make status`
 - [ ] Wait 60 seconds after starting for full initialization
 - [ ] Configuration file (`.env`) exists and is properly configured
 - [ ] Network connectivity is established (check internet connection)

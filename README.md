@@ -322,6 +322,67 @@ http://localhost:3000
 
 ---
 
+##  Verify Your Installation
+
+After setup, verify everything is working correctly.
+
+### Quick Verification
+
+The system includes automated verification scripts:
+
+#### Option 1: Pre-Installation System Check
+
+Before installing, verify your system meets all requirements:
+
+```bash
+./scripts_check-system.sh
+```
+
+This checks:
+- ✅ Operating system compatibility
+- ✅ Docker installation and version
+- ✅ Docker Compose availability
+- ✅ System resources (RAM, disk space)
+- ✅ Network connectivity
+- ✅ Required ports availability
+
+#### Option 2: Post-Installation Verification
+
+After setup, verify the installation is working:
+
+```bash
+./scripts_verify-installation.sh
+```
+
+This validates:
+- ✅ Configuration file exists and is valid
+- ✅ Docker containers are running
+- ✅ Services are healthy (database, API, web UI)
+- ✅ API endpoints respond correctly
+- ✅ Database connection works
+- ✅ No errors in recent logs
+
+Both scripts provide clear pass/fail feedback and actionable remediation steps.
+
+### Manual Verification
+
+If you prefer to verify manually:
+
+1. **Check services are running:**
+   ```bash
+   make status
+   ```
+
+2. **Test the API:**
+   ```bash
+   make test
+   ```
+
+3. **Access the web interface:**
+   Open http://localhost:3000 in your browser
+
+---
+
 ### Manual Setup (Alternative Method)
 
 If you prefer to configure manually or the wizard doesn't work:
@@ -340,7 +401,14 @@ If you prefer to configure manually or the wizard doesn't work:
 3. **Start the system:**
 
    ```bash
-   docker-compose up -d
+   make start
+   ```
+   
+   Or directly with Docker Compose:
+   ```bash
+   docker compose up -d   # Modern Docker Desktop (v2.x)
+   # OR
+   docker-compose up -d   # Older standalone version
    ```
 
 ---

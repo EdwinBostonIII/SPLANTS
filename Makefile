@@ -1,6 +1,9 @@
 # SPLANTS Marketing Engine - Makefile
 # Convenient commands for development and deployment
 
+# Auto-detect Docker Compose command (plugin vs standalone)
+DOCKER_COMPOSE := $(shell docker compose version > /dev/null 2>&1 && echo "docker compose" || echo "docker-compose")
+
 .PHONY: help
 help: ## Show this help message
 	@echo "SPLANTS Marketing Engine - Command Reference"
@@ -17,7 +20,7 @@ start: ## First-time setup and start (runs interactive wizard)
 		./scripts_quick-start.sh; \
 	else \
 		echo "Configuration exists. Starting services..."; \
-		docker-compose up -d; \
+		$(DOCKER_COMPOSE) up -d; \
 		echo ""; \
 		echo "✅ Services started!"; \
 		echo "   Web UI:    http://localhost:3000"; \
@@ -31,39 +34,39 @@ setup: ## Alias for 'start' - runs interactive setup wizard
 .PHONY: stop
 stop: ## Stop all services
 	@echo "Stopping services..."
-	@docker-compose down
+	@$(DOCKER_COMPOSE) down
 	@echo "✅ Services stopped"
 
 .PHONY: restart
 restart: ## Restart all services
 	@echo "Restarting services..."
-	@docker-compose restart
+	@$(DOCKER_COMPOSE) restart
 	@echo "✅ Services restarted"
 
 .PHONY: logs
 logs: ## View application logs (follow mode)
-	@docker-compose logs -f
+	@$(DOCKER_COMPOSE) logs -f
 
 .PHONY: logs-app
 logs-app: ## View app service logs only
-	@docker-compose logs -f app
+	@$(DOCKER_COMPOSE) logs -f app
 
 .PHONY: logs-web
 logs-web: ## View web service logs only
-	@docker-compose logs -f web
+	@$(DOCKER_COMPOSE) logs -f web
 
 .PHONY: logs-db
 logs-db: ## View database logs only
-	@docker-compose logs -f db
+	@$(DOCKER_COMPOSE) logs -f db
 
 .PHONY: status
 status: ## Check service status
-	@docker-compose ps
+	@$(DOCKER_COMPOSE) ps
 
 .PHONY: clean
 clean: ## Remove containers and volumes (WARNING: deletes data)
 	@echo "WARNING: This will delete all data!"
-	@read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] && docker-compose down -v || echo "Cancelled"
+	@read -p "Are you sure? (y/N): " confirm && [ "$$confirm" = "y" ] && $(DOCKER_COMPOSE) down -v || echo "Cancelled"
 
 .PHONY: backup
 backup: ## Backup database
@@ -87,34 +90,34 @@ test: ## Run API tests (validates backend-frontend contract)
 
 .PHONY: shell
 shell: ## Open Python shell in app container
-	@docker-compose exec app python
+	@$(DOCKER_COMPOSE) exec app python
 
 .PHONY: db-shell
 db-shell: ## Open PostgreSQL shell
-	@docker-compose exec db psql -U splants splants
+	@$(DOCKER_COMPOSE) exec db psql -U splants splants
 
 .PHONY: update
 update: ## Pull latest changes and rebuild
 	@echo "Updating SPLANTS Marketing Engine..."
 	@git pull
-	@docker-compose build --no-cache
-	@docker-compose up -d
+	@$(DOCKER_COMPOSE) build --no-cache
+	@$(DOCKER_COMPOSE) up -d
 	@echo "✅ Update complete!"
 
 .PHONY: dev
 dev: ## Start in development mode (attached, with logs)
-	@docker-compose up
+	@$(DOCKER_COMPOSE) up
 
 .PHONY: build
 build: ## Build Docker images
 	@echo "Building Docker images..."
-	@docker-compose build
+	@$(DOCKER_COMPOSE) build
 	@echo "✅ Build complete"
 
 .PHONY: rebuild
 rebuild: ## Rebuild Docker images (no cache)
 	@echo "Rebuilding Docker images (no cache)..."
-	@docker-compose build --no-cache
+	@$(DOCKER_COMPOSE) build --no-cache
 	@echo "✅ Rebuild complete"
 
 .PHONY: monitor

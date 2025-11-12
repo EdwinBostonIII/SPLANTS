@@ -4,7 +4,21 @@
 
 This index provides navigation to all system documentation components.
 
-**Total Documentation:** 7,000+ lines across 7 detailed guides
+**Total Documentation:** 9,000+ lines across 10 detailed guides
+
+---
+
+## 🆕 New in v2.1.1
+
+### Verification Scripts Reference
+**File:** [VERIFICATION_SCRIPTS_REFERENCE.md](#verification_scripts_referencemd)
+**Purpose:** Quick reference for system check and installation verification scripts
+**Size:** 200+ lines (5KB)
+
+### Update Guide v2.1.1
+**File:** [UPDATE_GUIDE_v2.1.1.md](#update_guide_v211md)
+**Purpose:** Guide for updating to version 2.1.1 with security fixes
+**Size:** 250+ lines (6KB)
 
 ---
 
@@ -16,6 +30,9 @@ This index provides navigation to all system documentation components.
 
 ### Initial Setup
 Reference: [README.md](#readmemd) → [SETUP_GUIDE.md](#setup_guidemd) → [QUICKSTART_WINDOWS.md](#quickstart_windowsmd)
+
+### System Verification
+Reference: [VERIFICATION_SCRIPTS_REFERENCE.md](#verification_scripts_referencemd)
 
 ### System Configuration
 Reference: [SETUP_GUIDE.md](#setup_guidemd) or platform-specific quickstart guides
@@ -35,6 +52,56 @@ Reference: [docs_DEPLOYMENT.md](#docs_deploymentmd)
 ---
 
 ## Documentation Files
+
+### VERIFICATION_SCRIPTS_REFERENCE.md ⭐ NEW
+**Size:** 200+ lines (5KB)
+**Purpose:** Quick reference for verification tools
+**Reading Time:** 5-10 minutes
+
+**Contents:**
+- System check script usage
+- Installation verification script usage
+- Common workflows
+- Interpreting results
+- Troubleshooting tips
+- Integration with Makefile
+
+**Best for:**
+- Understanding verification tools
+- Quick command reference
+- Troubleshooting workflows
+
+**Read this if:**
+- You want to verify your installation
+- You're troubleshooting issues
+- You need quick script reference
+
+---
+
+### UPDATE_GUIDE_v2.1.1.md ⭐ NEW
+**Size:** 250+ lines (6KB)
+**Purpose:** Guide for updating to v2.1.1
+**Reading Time:** 10 minutes
+
+**Contents:**
+- Security updates (CVE fixes)
+- New verification tools
+- Docker Compose compatibility
+- Update instructions
+- Testing procedures
+- Troubleshooting
+
+**Best for:**
+- Existing users updating
+- Understanding what changed
+- Migration guidance
+
+**Read this if:**
+- You're updating from older version
+- You want to know what's new
+- You need update instructions
+
+---
 
 ### README.md
 **Size:** 1,400+ lines (35KB)
@@ -427,13 +494,14 @@ If you can't find what you need:
 
 ##  Documentation Stats
 
-- **Total lines:** 7,100+
-- **Total size:** ~130KB
-- **Total files:** 8 main guides
+- **Total lines:** 9,000+
+- **Total size:** ~145KB
+- **Total files:** 10 main guides
 - **Questions answered:** 100+
 - **Problems solved:** 60+
 - **Code examples:** 50+
-- **Time to read all:** 3-4 hours
+- **Verification scripts:** 2
+- **Time to read all:** 4-5 hours
 
 ---
 
