@@ -22,6 +22,25 @@ This guide walks you through every single step with detailed explanations. Follo
 
 ## Before You Begin
 
+### Pre-Flight System Check (Recommended)
+
+Before starting the installation, run the system check script to verify your computer meets all requirements:
+
+```bash
+./scripts_check-system.sh
+```
+
+This will check:
+- ✅ Operating system compatibility
+- ✅ Docker installation status
+- ✅ Available RAM and disk space
+- ✅ Network connectivity
+- ✅ Required ports (3000, 5432)
+
+**If all checks pass**, proceed with the installation below. **If any fail**, follow the remediation steps provided by the script.
+
+---
+
 ### What You'll Need
 
 - [ ] A computer (Windows, Mac, or Linux)
@@ -797,7 +816,31 @@ splants_db_1     docker-entrypoint.sh postgres  Up      5432/tcp
 
 ## Step 6: Verify Everything Works
 
-### Test #1: Can You Access the API?
+### Automated Verification (Recommended)
+
+The easiest way to verify your installation is to use the automated verification script:
+
+```bash
+./scripts_verify-installation.sh
+```
+
+This comprehensive script will:
+- ✅ Check that .env configuration exists and is valid
+- ✅ Verify all Docker containers are running
+- ✅ Test service health (database, API, web UI)
+- ✅ Validate API endpoints respond correctly
+- ✅ Check database connectivity
+- ✅ Scan recent logs for errors
+
+**If all checks pass**, you're ready to generate content! **If any fail**, follow the specific remediation steps provided.
+
+---
+
+### Manual Verification (Alternative)
+
+If you prefer to verify manually:
+
+#### Test #1: Can You Access the API?
 
 1. **Open your web browser**
 2. **Go to:** `http://localhost:3000`
@@ -819,11 +862,11 @@ A JSON response with system information like:
 **If browser shows "can't reach page":**
 - Wait another 30 seconds and refresh
 - Check Docker is running (whale icon)
-- Run `docker-compose ps` to verify services are "Up"
+- Run `make status` to verify services are "Up"
 
 ---
 
-### Test #2: Check System Health
+#### Test #2: Check System Health
 
 **Go to:** `http://localhost:3000/api/health`
 
@@ -849,7 +892,7 @@ A JSON response with system information like:
 
 ---
 
-### Test #3: Interactive API Documentation
+#### Test #3: Interactive API Documentation
 
 1. **Go to:** `http://localhost:3000/api/docs`
 
@@ -864,7 +907,7 @@ A beautiful interactive API documentation page with:
 
 ---
 
-### Test #4: Run Test Script
+#### Test #4: Run Test Script
 
 **In your terminal**, run:
 

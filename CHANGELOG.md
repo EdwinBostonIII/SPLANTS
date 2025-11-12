@@ -5,6 +5,41 @@ All notable changes to the SPLANTS Marketing Engine will be documented in this f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2025-11-12
+
+### Added
+- 🛡️ **System Verification Scripts** - Two comprehensive diagnostic tools:
+  - `scripts_check-system.sh` - Pre-installation system requirements checker
+  - `scripts_verify-installation.sh` - Post-installation validation tool
+- 📚 Enhanced documentation with verification procedures in README.md and SETUP_GUIDE.md
+- 🔧 Automatic Docker Compose command detection in Makefile
+
+### Changed
+- 🔒 **Security Updates** - Updated all Python dependencies to latest secure versions:
+  - `fastapi` 0.104.1 → 0.115.5 (fixed ReDoS vulnerability)
+  - `python-multipart` 0.0.6 → 0.0.20 (fixed CVE-2024-53981 DoS vulnerability)
+  - `uvicorn` 0.24.0 → 0.32.1
+  - `pydantic` 2.5.0 → 2.10.3
+  - `openai` 1.3.0 → 1.57.2
+  - `anthropic` 0.7.0 → 0.42.0
+  - `httpx` 0.25.0 → 0.28.1
+  - `asyncpg` 0.29.0 → 0.30.0
+  - `python-dotenv` 1.0.0 → 1.0.1
+  - Updated Redis client: `aioredis` → `redis` 5.2.1
+- 🐳 **Docker Compose Compatibility** - Updated scripts and Makefile to support both modern (`docker compose`) and legacy (`docker-compose`) syntax
+- ✅ Added `curl` to Dockerfile for healthcheck support
+- 📖 Improved documentation with clearer Docker Compose command instructions
+
+### Fixed
+- 🔧 Docker Compose v2 compatibility issues in quick-start script
+- 📝 Removed redundant Docker Compose command references
+- 🔐 Security vulnerabilities in dependencies (CVE-2024-53981 and others)
+
+### Security
+- All dependencies verified to have no known security vulnerabilities via GitHub Advisory Database
+- Added comprehensive pre-flight and post-installation verification
+- Enhanced security guidance in documentation
+
 ## [2.1.0] - 2025-11-12
 
 ### Added
