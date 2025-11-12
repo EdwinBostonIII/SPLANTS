@@ -29,7 +29,7 @@ Last Updated: 2025-11-12
 from fastapi import FastAPI, HTTPException, BackgroundTasks, Depends, Security, Query
 from fastapi.security import APIKeyHeader
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional, Dict, Any, Literal
 import asyncio
 import asyncpg
@@ -487,20 +487,22 @@ class ContentRequest(BaseModel):
         description="PAID: Use multi-model synthesis for higher quality (+$0.02-0.05/request)"
     )
     
-    @validator('topic')
+    @field_validator('topic')
+    @classmethod
     def validate_topic(cls, v):
         """Ensure topic is meaningful"""
         if len(v.strip()) < 5:
             raise ValueError('Topic must be at least 5 characters')
         return v.strip()
     
-    @validator('keywords')
+    @field_validator('keywords')
+    @classmethod
     def validate_keywords(cls, v):
         """Ensure keywords are reasonable"""
         return [kw.strip() for kw in v if kw.strip()]
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "content_type": "blog",
                 "topic": "10 AI Marketing Tips for Small Business Owners",
@@ -533,7 +535,7 @@ class ContentResponse(BaseModel):
     recommendations: Optional[List[str]] = None
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "id": 1,
                 "content": "Your generated content will appear here...",
@@ -573,7 +575,7 @@ class PublishRequest(BaseModel):
     )
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "content_id": 1,
                 "platforms": ["twitter", "linkedin"],

@@ -28,6 +28,9 @@ wheels/
 .installed.cfg
 *.egg
 
+# Allow web source lib directory
+!web/src/lib/
+
 # Logs
 logs/
 *.log
