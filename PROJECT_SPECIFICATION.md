@@ -980,7 +980,6 @@ Requirements:
 Brand Information:
 - Product: Custom paint-splatter pants inspired by Jackson Pollock
 - Each pair is unique, handcrafted wearable art
-- Price range: $80-150
 - Sustainable, made-to-order production
 - Ships worldwide
 

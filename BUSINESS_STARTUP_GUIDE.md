@@ -26,7 +26,7 @@
 ### Part 3: Business Strategy (Weeks 2-4)
 9. [Defining Your Brand Identity](#defining-your-brand-identity)
 10. [Understanding Your Target Market](#understanding-your-target-market)
-11. [Pricing Strategy & Profit Margins](#pricing-strategy--profit-margins)
+11. [Pricing Considerations & Profit Margins](#pricing-considerations--profit-margins)
 12. [Marketing Strategy Blueprint](#marketing-strategy-blueprint)
 
 ### Part 4: Launch & Operations (Days 1-30)
@@ -113,7 +113,7 @@ By the end of this guide, you'll have:
 
 ### Why Custom Paint-Splatter Pants?
 
-The custom apparel market is booming, and here's why paint-splatter pants specifically present an excellent opportunity:
+The custom apparel market is booming, and here's why paint-splatter pants specifically work well in this market:
 
 #### Market Trends (2025)
 
@@ -145,27 +145,15 @@ TOTAL: $35-80/month
 
 ### Revenue Potential
 
-#### Conservative Scenario (Year 1)
-```
-Average Price: $100 per pair
-Profit Margin: 60% ($60 profit per pair)
-Sales Target: 50 pairs/month (by month 12)
+The revenue potential for Splants depends on your pricing strategy, production capacity, and market positioning. Consider factors such as:
 
-Monthly Revenue: $5,000
-Monthly Profit: $3,000
-Annual Profit: ~$18,000 (part-time business)
-```
+- Material and labor costs per pair
+- Target profit margins based on your business goals
+- Market research on what similar custom apparel sells for
+- Your brand positioning (entry-level vs. premium)
+- Production time and capacity constraints
 
-#### Growth Scenario (Year 2)
-```
-Average Price: $120 per pair
-Profit Margin: 65% ($78 profit per pair)
-Sales Target: 100 pairs/month
-
-Monthly Revenue: $12,000
-Monthly Profit: $7,800
-Annual Profit: ~$93,600 (full-time income)
-```
+You will need to determine pricing that covers costs while providing sustainable profit margins for your specific situation.
 
 ---
 
@@ -207,22 +195,21 @@ Break-Even Point: 9 pairs
 Timeline: Typically months 2-3
 ```
 
-### 6-Month ROI Projection
+### ROI Projection Example
 
-**Conservative Estimate:**
+**Note:** The following is an illustrative example. Your actual results will depend on your pricing strategy, market positioning, and operational efficiency.
+
 ```
-Month 1: 2 sales ($120 profit)
-Month 2: 5 sales ($300 profit)
-Month 3: 10 sales ($600 profit)
-Month 4: 15 sales ($900 profit)
-Month 5: 20 sales ($1,200 profit)
-Month 6: 25 sales ($1,500 profit)
+Progressive sales growth over initial period
+Early phases: Building marketing presence and testing market response
+Growth phases: Developing customer base and refining operations
+Established phases: Achieving consistent sales patterns
 
-Total 6-Month Profit: $4,620
-Initial Investment: -$1,000
-Net Profit: $3,620
-
-ROI: 362% over 6 months
+Calculate your potential ROI by:
+1. Determining your per-unit profit margin
+2. Estimating realistic sales volume based on your capacity
+3. Accounting for all startup and operational costs
+4. Tracking actual performance against projections
 ```
 
 ---
@@ -623,71 +610,51 @@ Content Type: Guide
 
 ---
 
-## Pricing Strategy & Profit Margins
+## Pricing Considerations & Profit Margins
 
 ### Cost Calculation
 
-**Per-Pair Cost:**
-```
-Materials:
-- Blank pants: $15-25
-- Fabric paints: $8-12
-- Sealant/finish: $2-3
-- Packaging: $3-5
-TOTAL MATERIALS: $28-45
+Understanding your costs is essential for determining sustainable pricing. Calculate your per-pair cost including:
 
-Labor:
-- Creation time: 2-3 hours
-- Your hourly rate: $20-30/hr
-LABOR COST: $40-90
+**Materials:**
+- Base pants (quality and source affect cost)
+- Fabric paints and artistic supplies
+- Sealant/protective finish
+- Packaging materials
 
-Overhead (monthly):
-- SPLANTS: $80/month ÷ 50 pairs = $1.60
-- Etsy fees: 5% + $0.20
-- Payment processing: 3%
-OVERHEAD: ~$6-10 per pair
+**Labor:**
+- Creation time per pair
+- Your hourly rate valuation
+- Design and preparation time
 
-TOTAL COST PER PAIR: $74-145
-```
+**Overhead:**
+- SPLANTS subscription (divided across monthly production)
+- Platform fees (Etsy, Shopify, etc.)
+- Payment processing fees
+- Shipping supplies and materials
 
-### Pricing Tiers
+Once you understand your total cost per pair, you can determine pricing that provides adequate profit margins for your business sustainability.
 
-**Entry Level:** $80-100
-- Simple designs
-- Standard pants
-- Basic packaging
+### Determining Your Pricing Strategy
 
-**Mid-Tier:** $120-150
-- Complex designs
-- Premium pants (denim)
-- Branded packaging
+Consider creating different tiers based on:
 
-**Premium:** $180-250
-- Fully custom designs
-- Designer denim
-- Gift-ready packaging
-- Personalization
+**Factors to Consider:**
+- Design complexity and time investment
+- Quality and source of base pants
+- Packaging presentation
+- Level of customization offered
+- Brand positioning in the market
 
-### Profit Margin Analysis
+### Profit Margin Considerations
 
-```
-Price: $100
-Cost: $75
-Profit: $25
-Margin: 25%
+When setting your prices, ensure you account for:
+- All material costs (pants, paints, sealants, packaging)
+- Labor time at a rate that values your work
+- Overhead costs (SPLANTS, platform fees, shipping supplies)
+- Desired profit margin for business sustainability
 
-Price: $130
-Cost: $80
-Profit: $50
-Margin: 38%
-
-Price: $150
-Cost: $85
-Profit: $65
-Margin: 43%
-```
-
-**Recommended:** Start at $100-120 to build customer base, then increase as demand grows.
+Calculate your total cost per pair, then determine pricing that achieves your target profit margin while remaining competitive in your chosen market segment.
 
 ---
 
