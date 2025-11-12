@@ -1,29 +1,28 @@
 """
-SPLANTS Marketing Engine - Small Business Edition v2.1
-A sophisticated AI marketing engine optimized for small businesses
+SPLANTS Marketing Engine v2.1
+AI-powered content generation system for SPLANTS custom pants marketing
 
 CORE FEATURES (Included - $30/month infrastructure):
-✅ AI Content Generation (GPT-4)
-✅ Multi-Platform Publishing
-✅ SEO Optimization
-✅ Quality Scoring
-✅ Content Storage & Management
+- AI Content Generation (GPT-4)
+- Multi-Platform Publishing
+- SEO Optimization
+- Quality Scoring
+- Content Storage & Management
 
 FREE OPTIONAL ENHANCEMENTS (Included, can enable/disable):
-🎁 Analytics Dashboard - Track ROI and performance
-🎁 A/B Testing - Test content variations
-🎁 Content Templates - Proven content structures
-🎁 Cost Control - Budget monitoring and alerts
-🎁 Webhook System - Automation integrations
-🎁 Smart Hashtags - Auto-generate optimized hashtags
-🎁 Platform Optimization - Auto-adjust for each platform
+- Analytics Dashboard - Track ROI and performance
+- A/B Testing - Test content variations
+- Content Templates - Proven content structures
+- Cost Control - Budget monitoring and alerts
+- Webhook System - Automation integrations
+- Smart Hashtags - Auto-generate optimized hashtags
+- Platform Optimization - Auto-adjust for each platform
 
 PAID OPTIONAL ENHANCEMENTS (Add when ready):
-💰 Redis Caching (+$10-15/month) - 30-50% API cost reduction
-💰 Multi-Model Synthesis (+$0.02-0.05/request) - GPT-4 + Claude
-💰 Social Media Auto-Posting (Varies by platform) - Requires API keys
+- Redis Caching (+$10-15/month) - 30-50% API cost reduction
+- Multi-Model Synthesis (+$0.02-0.05/request) - GPT-4 + Claude
+- Social Media Auto-Posting (Varies by platform) - Requires API keys
 
-Author: SPLANTS Team
 Last Updated: 2025-11-12
 """
 
@@ -78,16 +77,16 @@ logger = logging.getLogger(__name__)
 # ============================================
 
 app = FastAPI(
-    title="SPLANTS Marketing Engine - Small Business Edition",
-    version="2.1-SB",
+    title="SPLANTS Marketing Engine",
+    version="2.1",
     description="""
-    Enterprise AI Marketing for Small Business
+    AI-Powered Content Generation System for SPLANTS
     
-    **Core System**: $30/month infrastructure
-    **Free Enhancements**: Analytics, A/B Testing, Templates, Cost Control
-    **Paid Enhancements**: Redis Caching, Multi-Model AI, Auto-Publishing
+    Core System: $30/month infrastructure
+    Free Enhancements: Analytics, A/B Testing, Templates, Cost Control
+    Paid Enhancements: Redis Caching, Multi-Model AI, Auto-Publishing
     
-    Get started in 5 minutes with zero technical knowledge required!
+    Comprehensive documentation available at /docs
     """,
     docs_url="/docs",  # Swagger UI at /docs
     redoc_url="/redoc"  # ReDoc at /redoc
@@ -197,9 +196,9 @@ async def startup():
             max_size=10,
             command_timeout=60
         )
-        logger.info("✅ Database connected successfully")
+        logger.info(" Database connected successfully")
     except Exception as e:
-        logger.error(f"❌ Database connection failed: {e}")
+        logger.error(f" Database connection failed: {e}")
         raise
     
     # Core: Create essential tables
@@ -310,7 +309,7 @@ async def startup():
             )
         ''')
         
-        logger.info("✅ Database tables initialized")
+        logger.info(" Database tables initialized")
     
     # PAID OPTIONAL ENHANCEMENT: Redis Cache Connection (+$10-15/month)
     if CACHE_ENABLED and REDIS_URL:
@@ -322,13 +321,13 @@ async def startup():
             #     decode_responses=True
             # )
             # await redis_cache.ping()
-            # logger.info("✅ Redis cache connected (API costs will be reduced by 30-50%)")
-            logger.info("ℹ️ Redis caching configured but not active (uncomment in code to enable)")
+            # logger.info(" Redis cache connected (API costs will be reduced by 30-50%)")
+            logger.info(" Redis caching configured but not active (uncomment in code to enable)")
         except Exception as e:
-            logger.warning(f"⚠️ Redis connection failed: {e}")
+            logger.warning(f" Redis connection failed: {e}")
             logger.warning("Continuing without cache. Add Redis for 30-50% cost savings.")
     else:
-        logger.info("ℹ️ Redis caching disabled (add REDIS_URL to enable cost savings)")
+        logger.info(" Redis caching disabled (add REDIS_URL to enable cost savings)")
     
     # FREE OPTIONAL ENHANCEMENT: Initialize services
     await analytics.initialize()
@@ -337,21 +336,21 @@ async def startup():
     # Log startup configuration
     logger.info("=" * 60)
     logger.info("CONFIGURATION:")
-    logger.info(f"  OpenAI: {'✅ Configured' if OPENAI_API_KEY else '❌ Missing'}")
-    logger.info(f"  Anthropic (Multi-Model): {'✅ Configured' if ANTHROPIC_API_KEY else '❌ Not configured (optional)'}")
-    logger.info(f"  Redis Caching: {'✅ Enabled' if CACHE_ENABLED else '❌ Disabled (optional +$10/mo)'}")
-    logger.info(f"  Cost Control: {'✅ Enabled ($' + str(MONTHLY_AI_BUDGET) + '/mo budget)' if MONTHLY_AI_BUDGET > 0 else '❌ Disabled'}")
-    logger.info(f"  Webhooks: {'✅ Configured' if any([WEBHOOK_CONTENT_GENERATED, WEBHOOK_CONTENT_PUBLISHED]) else '❌ Not configured (optional)'}")
+    logger.info(f"  OpenAI: {' Configured' if OPENAI_API_KEY else ' Missing'}")
+    logger.info(f"  Anthropic (Multi-Model): {' Configured' if ANTHROPIC_API_KEY else ' Not configured (optional)'}")
+    logger.info(f"  Redis Caching: {' Enabled' if CACHE_ENABLED else ' Disabled (optional +$10/mo)'}")
+    logger.info(f"  Cost Control: {' Enabled ($' + str(MONTHLY_AI_BUDGET) + '/mo budget)' if MONTHLY_AI_BUDGET > 0 else ' Disabled'}")
+    logger.info(f"  Webhooks: {' Configured' if any([WEBHOOK_CONTENT_GENERATED, WEBHOOK_CONTENT_PUBLISHED]) else ' Not configured (optional)'}")
     logger.info("=" * 60)
     logger.info("FREE ENHANCEMENTS ACTIVE:")
-    logger.info("  ✅ Analytics Dashboard")
-    logger.info("  ✅ A/B Testing")
-    logger.info("  ✅ Content Templates")
-    logger.info("  ✅ Smart Hashtags")
-    logger.info("  ✅ Platform Optimization")
+    logger.info("  - Analytics Dashboard")
+    logger.info("  - A/B Testing")
+    logger.info("  - Content Templates")
+    logger.info("  - Smart Hashtags")
+    logger.info("  - Platform Optimization")
     logger.info("=" * 60)
-    logger.info("🚀 SPLANTS Marketing Engine Ready!")
-    logger.info("📖 API Docs: http://localhost:8080/docs")
+    logger.info("SPLANTS Marketing Engine Ready")
+    logger.info("API Documentation: http://localhost:8080/docs")
     logger.info("=" * 60)
 
 @app.on_event("shutdown")
@@ -772,7 +771,7 @@ class ContentEngine:
             # background_tasks.add_task(self._cache_content, cache_key, response)
             pass
         
-        logger.info(f"✅ Content generated (ID: {content_id}, Quality: {quality_score:.2f}, Cost: ${estimated_cost:.3f})")
+        logger.info(f" Content generated (ID: {content_id}, Quality: {quality_score:.2f}, Cost: ${estimated_cost:.3f})")
         
         return response
     
@@ -1152,12 +1151,12 @@ Structure: Headline, dateline, lead paragraph, body, boilerplate, contact info."
             if not any(char for char in content if ord(char) > 127):
                 # Add relevant emoji at start
                 emoji_map = {
-                    'tip': '💡',
+                    'tip': '',
                     'business': '💼',
-                    'marketing': '📈',
-                    'ai': '🤖',
-                    'money': '💰',
-                    'success': '🎯'
+                    'marketing': '',
+                    'ai': '',
+                    'money': '',
+                    'success': ''
                 }
                 
                 for keyword, emoji in emoji_map.items():
@@ -1496,10 +1495,10 @@ Structure: Headline, dateline, lead paragraph, body, boilerplate, contact info."
         
         # Quality recommendations
         if quality_score < 0.7:
-            recommendations.append("💡 Consider adding more specific examples or data to increase quality")
+            recommendations.append(" Consider adding more specific examples or data to increase quality")
         
         if quality_score < 0.8:
-            recommendations.append("💡 Add more engagement elements like questions or calls-to-action")
+            recommendations.append(" Add more engagement elements like questions or calls-to-action")
         
         # SEO recommendations
         if seo_score < 0.6:
@@ -1526,9 +1525,9 @@ Structure: Headline, dateline, lead paragraph, body, boilerplate, contact info."
         
         # A/B testing recommendation
         if not request.generate_variants and request.content_type in [ContentType.EMAIL, ContentType.AD_COPY]:
-            recommendations.append("🧪 Enable A/B testing to find the highest-performing version (free)")
+            recommendations.append(" Enable A/B testing to find the highest-performing version (free)")
         
-        return recommendations if recommendations else ["✅ Content quality is excellent! No improvements needed."]
+        return recommendations if recommendations else [" Content quality is excellent! No improvements needed."]
     
     def _estimate_cost(self, request: ContentRequest) -> float:
         """
@@ -2868,15 +2867,15 @@ webhook_system = WebhookSystem()
 @app.get("/", tags=["Core"])
 async def root():
     """
-    Welcome endpoint with system information
+    System information endpoint
     
-    This endpoint provides an overview of the system and its capabilities.
+    Provides an overview of system capabilities and configuration status.
     """
     return {
-        "name": "SPLANTS Marketing Engine - Small Business Edition",
-        "version": "2.1-SB",
+        "name": "SPLANTS Marketing Engine",
+        "version": "2.1",
         "status": "operational",
-        "tagline": "Enterprise AI Marketing That Runs on $30/Month",
+        "description": "AI-powered content generation system for SPLANTS",
         "documentation": {
             "swagger_ui": "/docs",
             "redoc": "/redoc"
@@ -2889,19 +2888,19 @@ async def root():
                 "SEO Optimization",
                 "Quality Scoring",
                 "Content Storage & Management",
-                "Simple API Authentication"
+                "API Authentication"
             ]
         },
         "free_enhancements": {
             "cost": "$0/month",
             "features": [
-                "Analytics Dashboard - Track ROI and performance",
-                "A/B Testing - Test content variations",
-                "Content Templates - Proven structures",
+                "Analytics Dashboard - ROI and performance tracking",
+                "A/B Testing - Content variation testing",
+                "Content Templates - Structured content frameworks",
                 "Cost Control - Budget monitoring",
-                "Webhook System - Automation integrations",
-                "Smart Hashtags - Auto-generated",
-                "Platform Optimization - Auto-adjusted content"
+                "Webhook System - Automation integration",
+                "Smart Hashtags - Automated hashtag generation",
+                "Platform Optimization - Platform-specific content adaptation"
             ]
         },
         "paid_enhancements": {
@@ -2916,23 +2915,23 @@ async def root():
                 "enabled": bool(ANTHROPIC_API_KEY)
             },
             "auto_publishing": {
-                "cost": "Varies by platform (most free)",
-                "benefit": "Automatic social media posting",
+                "cost": "Varies by platform",
+                "benefit": "Automated social media posting",
                 "enabled": any([TWITTER_API_KEY, LINKEDIN_CLIENT_ID])
             }
         },
         "configuration_status": {
-            "openai": "✅ Configured" if OPENAI_API_KEY else "❌ Missing (required)",
-            "anthropic": "✅ Configured" if ANTHROPIC_API_KEY else "⚠️ Not configured (optional)",
-            "redis_cache": "✅ Enabled" if CACHE_ENABLED else "⚠️ Disabled (optional)",
-            "cost_control": "✅ Enabled" if MONTHLY_AI_BUDGET > 0 else "⚠️ Disabled (optional)",
-            "webhooks": "✅ Configured" if any([WEBHOOK_CONTENT_GENERATED, WEBHOOK_CONTENT_PUBLISHED]) else "⚠️ Not configured (optional)"
+            "openai": "Configured" if OPENAI_API_KEY else "Missing (required)",
+            "anthropic": "Configured" if ANTHROPIC_API_KEY else "Not configured (optional)",
+            "redis_cache": "Enabled" if CACHE_ENABLED else "Disabled (optional)",
+            "cost_control": "Enabled" if MONTHLY_AI_BUDGET > 0 else "Disabled (optional)",
+            "webhooks": "Configured" if any([WEBHOOK_CONTENT_GENERATED, WEBHOOK_CONTENT_PUBLISHED]) else "Not configured (optional)"
         },
-        "getting_started": {
-            "step_1": "Add your OpenAI API key to .env file (OPENAI_API_KEY)",
-            "step_2": "Set your API key for authentication (API_KEY)",
-            "step_3": "Make your first request to /v1/generate",
-            "step_4": "Check /docs for complete API documentation"
+        "setup_steps": {
+            "step_1": "Configure OpenAI API key in .env file (OPENAI_API_KEY)",
+            "step_2": "Set API authentication key (API_KEY)",
+            "step_3": "Test content generation at /v1/generate",
+            "step_4": "Review complete documentation at /docs"
         }
     }
 
@@ -2941,7 +2940,7 @@ async def health_check():
     """
     Health check endpoint
     
-    Use this to monitor system status and check if all services are operational.
+    Monitors system status and operational state of all services.
     """
     try:
         # Check database
@@ -2954,7 +2953,7 @@ async def health_check():
     return {
         "status": "healthy" if db_status == "connected" else "degraded",
         "timestamp": datetime.utcnow().isoformat(),
-        "version": "2.1-SB",
+        "version": "2.1",
         "services": {
             "database": db_status,
             "openai": "configured" if content_engine.openai_client else "not_configured",
@@ -2962,7 +2961,7 @@ async def health_check():
             "redis_cache": "enabled" if CACHE_ENABLED else "disabled",
             "cost_control": "enabled" if MONTHLY_AI_BUDGET > 0 else "disabled"
         },
-        "uptime_since": datetime.utcnow().isoformat(),  # Would track actual uptime in production
+        "uptime_since": datetime.utcnow().isoformat(),
         "api_docs": "/docs"
     }
 
@@ -3563,7 +3562,7 @@ async def get_system_status(
     return {
         "status": "operational",
         "timestamp": datetime.utcnow().isoformat(),
-        "version": "2.1-SB",
+        "version": "2.1",
         "services": {
             "database": {
                 "status": "connected",
@@ -3739,7 +3738,7 @@ if __name__ == "__main__":
     import uvicorn
     
     logger.info("=" * 60)
-    logger.info("Starting SPLANTS Marketing Engine - Small Business Edition")
+    logger.info("Starting SPLANTS Marketing Engine - ")
     logger.info("=" * 60)
     
     uvicorn.run(

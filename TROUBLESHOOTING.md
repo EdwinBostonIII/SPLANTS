@@ -1,4 +1,4 @@
-# 🔧 SPLANTS Marketing Engine - Troubleshooting Guide
+#  SPLANTS Marketing Engine - Troubleshooting Guide
 
 ## Complete Problem-Solving Reference
 
@@ -6,11 +6,11 @@ This guide helps you solve common problems. Find your issue below and follow the
 
 ---
 
-## 📋 Quick Diagnostic Checklist
+##  Quick Diagnostic Checklist
 
 Before diving into specific problems, check these basics:
 
-- [ ] Is Docker running? (Look for whale icon 🐳)
+- [ ] Is Docker running? (Look for whale icon )
 - [ ] Are services running? Run: `docker-compose ps`
 - [ ] Did you wait 60 seconds after starting?
 - [ ] Is your `.env` file configured correctly?
@@ -136,9 +136,9 @@ docker ps
 1. Open Control Panel
 2. Programs → Turn Windows features on or off
 3. Check these boxes:
-   - ✅ Hyper-V
-   - ✅ Windows Subsystem for Linux
-   - ✅ Virtual Machine Platform
+   -  Hyper-V
+   -  Windows Subsystem for Linux
+   -  Virtual Machine Platform
 4. Click OK
 5. Restart computer
 6. Start Docker Desktop
@@ -320,20 +320,20 @@ docker-compose logs -f app
 ```
 
 **Look for:**
-- ✅ "SPLANTS Marketing Engine Ready!"
-- ✅ "Application startup complete"
-- ❌ Any error messages in red
+-  "SPLANTS Marketing Engine Ready!"
+-  "Application startup complete"
+-  Any error messages in red
 
 **Step 3: Is Database Connected?**
 
 In logs, look for:
 ```
-✅ Database connected successfully
+ Database connected successfully
 ```
 
 If you see:
 ```
-❌ Database connection failed
+ Database connection failed
 ```
 See [Database Problems](#database-problems) section.
 
@@ -445,10 +445,10 @@ API_KEY=your-actual-password
 ```
 
 **Common mistakes:**
-- ❌ Still using default: `change-this-to-a-secure-password-123`
-- ❌ Extra spaces: `API_KEY= mypassword` (space after =)
-- ❌ Quotes: `API_KEY="mypassword"` (shouldn't have quotes)
-- ❌ Comments: `# API_KEY=mypassword` (shouldn't be commented out)
+-  Still using default: `change-this-to-a-secure-password-123`
+-  Extra spaces: `API_KEY= mypassword` (space after =)
+-  Quotes: `API_KEY="mypassword"` (shouldn't have quotes)
+-  Comments: `# API_KEY=mypassword` (shouldn't be commented out)
 
 **Solution 2: Restart After Changing**
 ```bash
@@ -501,10 +501,10 @@ OPENAI_API_KEY=sk-proj-abc123...
 ```
 
 **Common mistakes:**
-- ❌ Still placeholder: `OPENAI_API_KEY=sk-your-api-key-here`
-- ❌ Missing entirely
-- ❌ Commented out: `# OPENAI_API_KEY=...`
-- ❌ Extra spaces or quotes
+-  Still placeholder: `OPENAI_API_KEY=sk-your-api-key-here`
+-  Missing entirely
+-  Commented out: `# OPENAI_API_KEY=...`
+-  Extra spaces or quotes
 
 **Solution 2: Get New API Key**
 
@@ -577,9 +577,9 @@ The error message usually tells you exactly what's wrong. Common ones:
 
 1. Go to: https://platform.openai.com/account/billing/overview
 2. Check:
-   - ✅ Do you have credits remaining?
-   - ✅ Is your payment method valid?
-   - ✅ Did you set usage limits that block all requests?
+   -  Do you have credits remaining?
+   -  Is your payment method valid?
+   -  Did you set usage limits that block all requests?
 
 **Step 3: Test OpenAI API Directly**
 
@@ -658,7 +658,7 @@ See how much you've actually spent and when it resets.
 MONTHLY_AI_BUDGET=0  # 0 = unlimited
 ```
 
-⚠️ **Warning:** You could accidentally spend a lot!
+ **Warning:** You could accidentally spend a lot!
 
 ---
 
@@ -732,7 +732,7 @@ Templates provide proven structures:
 
 **Symptoms:**
 ```
-❌ Database connection failed: connection refused
+ Database connection failed: connection refused
 ```
 
 **Solutions:**
@@ -798,7 +798,7 @@ Failed to initialize database
 
 **Solution: Reset Database**
 
-⚠️ **Warning:** This deletes all content!
+ **Warning:** This deletes all content!
 
 ```bash
 # Stop everything
@@ -816,7 +816,7 @@ docker-compose logs -f app
 
 Look for:
 ```
-✅ Database tables initialized
+ Database tables initialized
 ```
 
 ---
@@ -984,7 +984,7 @@ docker system prune -a
 # When asked "Are you sure?", type: y
 ```
 
-⚠️ This removes ALL unused Docker data (not just SPLANTS).
+ This removes ALL unused Docker data (not just SPLANTS).
 
 **Solution 2: Clean Old Backups**
 
@@ -1173,11 +1173,11 @@ Error: Invalid value for MONTHLY_AI_BUDGET
 **Check Data Types:**
 
 ```env
-# ✅ CORRECT
+#  CORRECT
 MONTHLY_AI_BUDGET=50
 DAILY_API_LIMIT=100
 
-# ❌ WRONG
+#  WRONG
 MONTHLY_AI_BUDGET=$50
 DAILY_API_LIMIT=100 requests
 MONTHLY_AI_BUDGET=fifty dollars
@@ -1185,20 +1185,20 @@ MONTHLY_AI_BUDGET=fifty dollars
 
 **No quotes needed:**
 ```env
-# ✅ CORRECT
+#  CORRECT
 API_KEY=MyPassword123
 
-# ❌ WRONG
+#  WRONG
 API_KEY="MyPassword123"
 API_KEY='MyPassword123'
 ```
 
 **No spaces around =:**
 ```env
-# ✅ CORRECT
+#  CORRECT
 API_KEY=value
 
-# ❌ WRONG
+#  WRONG
 API_KEY = value
 API_KEY= value
 ```
@@ -1265,7 +1265,7 @@ Type `\q` to exit.
 
 ### Complete Reset (Nuclear Option)
 
-⚠️ **Warning:** This deletes EVERYTHING!
+ **Warning:** This deletes EVERYTHING!
 
 ```bash
 # Stop and remove everything
@@ -1364,7 +1364,7 @@ Gather this information:
    - docs_DEPLOYMENT.md - Deployment guide
 
 2. **GitHub Issues:**
-   - https://github.com/EdwinBostonIII/SPLANTS/issues
+   - [repository URL]/issues
    - Search existing issues first
    - Create new issue with information above
 
@@ -1416,7 +1416,7 @@ git commit -m "My custom setup"
 
 **Remember:** Most problems are simple configuration issues. Take a deep breath, read error messages carefully, and work through solutions systematically!
 
-**🎯 Pro Tip:** When in doubt, restart:
+** Pro Tip:** When in doubt, restart:
 ```bash
 docker-compose restart
 ```

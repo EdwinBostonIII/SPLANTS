@@ -1,4 +1,4 @@
-# 🚀 SPLANTS Quick Start - Windows Users
+#  SPLANTS Quick Start - Windows Users
 
 ## Get Started in 15 Minutes!
 
@@ -6,7 +6,7 @@ This guide is specifically for **Windows 10/11** users with **no technical backg
 
 ---
 
-## ✅ Before You Start
+##  Before You Start
 
 You need:
 - [ ] Windows 10 or Windows 11 (64-bit)
@@ -43,8 +43,8 @@ Think of Docker as a "virtual box" that contains everything SPLANTS needs to run
 ### Start Docker
 
 1. **After restart,** Docker Desktop should open automatically
-2. **Look for whale icon 🐳** in system tray (bottom-right, near clock)
-3. **If you see it:** Docker is running! ✅
+2. **Look for whale icon ** in system tray (bottom-right, near clock)
+3. **If you see it:** Docker is running! 
 4. **If not:** 
    - Click Start button
    - Type "Docker Desktop"
@@ -107,7 +107,7 @@ A "key" that lets SPLANTS use OpenAI's AI (the same AI that powers ChatGPT).
 
 ### Download
 
-1. **Go to:** https://github.com/EdwinBostonIII/SPLANTS
+1. **Go to:** [repository URL]
 2. **Click:** Green "Code" button
 3. **Click:** "Download ZIP"
 4. **Wait:** File downloads (~1MB)
@@ -226,7 +226,7 @@ A page with system information like:
 }
 ```
 
-**If you see this: SUCCESS! ✅**
+**If you see this: SUCCESS! **
 
 ### Open API Documentation
 
@@ -261,7 +261,7 @@ You'll see a beautiful interface with:
 6. **Wait** 10-30 seconds
 7. **Scroll down** to see your generated content!
 
-**🎉 Congratulations! You just generated AI content!**
+** Complete. You just generated AI content!**
 
 ---
 
@@ -378,24 +378,24 @@ docker-compose up -d
 
 Now that it's working:
 
-1. ✅ **Generate different content types**
+1.  **Generate different content types**
    - Blog posts
    - Social media posts
    - Emails
    - Ad copy
 
-2. ✅ **Explore features**
+2.  **Explore features**
    - Analytics dashboard
    - Content templates
    - Cost tracking
    - A/B testing
 
-3. ✅ **Set up automation**
+3.  **Set up automation**
    - Webhooks for Zapier
    - Scheduled content
    - Backup routine
 
-4. ✅ **Read documentation**
+4.  **Read documentation**
    - README.md - Complete guide
    - FAQ.md - 100+ questions answered
    - TROUBLESHOOTING.md - Problem solving
@@ -411,12 +411,12 @@ Now that it's working:
 - FAQ.md - Common questions
 
 **Need More Help?**
-- GitHub Issues: https://github.com/EdwinBostonIII/SPLANTS/issues
+- GitHub Issues: [repository URL]/issues
 - Include: Windows version, error messages, screenshots
 
 ---
 
-**🎉 You did it! Welcome to AI-powered marketing automation!**
+** Configuration complete. Welcome to AI-powered marketing automation!**
 
 **Remember:** You now have a tool worth thousands of dollars that costs only $35-80/month. Use it well!
 
