@@ -10,6 +10,11 @@ This index provides navigation to all system documentation components.
 
 ## 🆕 New in v2.1.1
 
+### Agentic Workflow Master Guide ⭐ NEW
+**File:** [AGENTIC_WORKFLOW_GUIDE.md](#agentic_workflow_guidemd)
+**Purpose:** Exhaustive ground-up implementation playbook for the solo brand owner  
+**Size:** 500+ lines (new)  
+
 ### Business Startup Guide ⭐ NEW
 **File:** [BUSINESS_STARTUP_GUIDE.md](#business_startup_guidemd)
 **Purpose:** Complete roadmap for starting a custom pants business with SPLANTS
@@ -36,6 +41,9 @@ This index provides navigation to all system documentation components.
 ### Starting Your Business
 Reference: [BUSINESS_STARTUP_GUIDE.md](#business_startup_guidemd) (Complete entrepreneur roadmap)
 
+### Implementing Agentic Workflows
+Reference: [AGENTIC_WORKFLOW_GUIDE.md](#agentic_workflow_guidemd) (Ground-up workflow build with integration logic)
+
 ### Initial Setup
 Reference: [README.md](#readmemd) → [SETUP_GUIDE.md](#setup_guidemd) → [QUICKSTART_WINDOWS.md](#quickstart_windowsmd)
 
@@ -60,6 +68,31 @@ Reference: [docs_DEPLOYMENT.md](#docs_deploymentmd)
 ---
 
 ## Documentation Files
+
+### AGENTIC_WORKFLOW_GUIDE.md ⭐ NEW
+**Size:** 500+ lines (new)  
+**Purpose:** Exhaustively guided agentic workflow build for the solo business owner  
+**Reading Time:** 75-90 minutes  
+
+**Contents:**
+- Sequential ground-up implementation plan from brand prep to automation
+- Detailed “if-then” decision logic for every optional enhancement
+- Brand voice calibration worksheets and quality safeguards
+- Agentic workflow activation steps aligned with `WORKFLOW_AUTOMATION.md`
+- Brand potential scorecard with concrete, non-price metrics
+- Operating rhythms, troubleshooting, and command appendix
+
+**Best for:**
+- Business owners integrating SPLANTS personally
+- Anyone needing a guided workflow that bridges technical and creative tasks
+- Users deciding which optional integrations to enable
+
+**Read this if:**
+- You want exhaustive, step-by-step direction with built-in decision trees
+- You plan to enable webhooks, caching, or multi-model features responsibly
+- You need brand-aligned automation without relying on external consultants
+
+---
 
 ### BUSINESS_STARTUP_GUIDE.md ⭐ NEW
 **Size:** 1,750+ lines (60KB)
