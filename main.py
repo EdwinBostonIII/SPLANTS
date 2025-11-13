@@ -109,7 +109,7 @@ app.add_middleware(
 # REQUIRED - Core System ($30/month infrastructure)
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://splants:password@db:5432/splants")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")  # Required for AI generation
-API_KEY = os.getenv("API_KEY", "change-this-to-a-secure-key")  # Your API key for authentication
+API_KEY = os.getenv("API_KEY", "change-this-to-a-secure-password-123")  # Your API key for authentication
 
 # OPTIONAL - Multi-Model Enhancement
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")  # For premium multi-model
@@ -146,7 +146,7 @@ if not OPENAI_API_KEY:
     logger.error("CRITICAL: OPENAI_API_KEY not set! Application will not function properly.")
     logger.error("Please add your OpenAI API key to .env file")
 
-if API_KEY == "change-this-to-a-secure-key":
+if API_KEY == "change-this-to-a-secure-password-123":
     logger.warning("WARNING: Using default API key. Please change this in production!")
 
 # ============================================
@@ -3593,6 +3593,34 @@ class SystemSettingsRequest(BaseModel):
     webhook_content_generated_url: Optional[str] = Field(None, description="Webhook URL for content generated events")
     webhook_content_published_url: Optional[str] = Field(None, description="Webhook URL for content published events")
     webhook_daily_report_url: Optional[str] = Field(None, description="Webhook URL for daily report events")
+
+# ============================================
+# PUBLIC CONFIGURATION ENDPOINT
+# ============================================
+
+@app.get("/v1/config/public", tags=["System"])
+async def get_public_config():
+    """
+    Public configuration metadata for onboarding flows.
+
+    Returns non-sensitive information so the UI can guide first-time setup.
+    Does NOT expose any secret values—only whether critical items are configured.
+    """
+    webhooks_configured = bool(
+        WEBHOOK_CONTENT_GENERATED or WEBHOOK_CONTENT_PUBLISHED or WEBHOOK_DAILY_REPORT
+    )
+
+    return {
+        "api_key_configured": bool(API_KEY and API_KEY != "change-this-to-a-secure-password-123"),
+        "openai_configured": bool(OPENAI_API_KEY),
+        "features": {
+            "redis_enabled": CACHE_ENABLED,
+            "anthropic_enabled": bool(ANTHROPIC_API_KEY),
+            "webhooks_configured": webhooks_configured,
+            "budget_enforced": MONTHLY_AI_BUDGET > 0,
+            "daily_limit_enforced": DAILY_API_LIMIT > 0,
+        },
+    }
 
 @app.get("/v1/system/settings", tags=["System"])
 async def get_system_settings(

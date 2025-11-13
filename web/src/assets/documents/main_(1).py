@@ -109,7 +109,7 @@ app.add_middleware(
 # REQUIRED - Core System ($30/month infrastructure)
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://splants:password@db:5432/splants")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")  # Required for AI generation
-API_KEY = os.getenv("API_KEY", "change-this-to-a-secure-key")  # Your API key for authentication
+API_KEY = os.getenv("API_KEY", "change-this-to-a-secure-password-123")  # Your API key for authentication
 
 # OPTIONAL - Multi-Model Enhancement
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")  # For premium multi-model
@@ -146,7 +146,7 @@ if not OPENAI_API_KEY:
     logger.error("CRITICAL: OPENAI_API_KEY not set! Application will not function properly.")
     logger.error("Please add your OpenAI API key to .env file")
 
-if API_KEY == "change-this-to-a-secure-key":
+if API_KEY == "change-this-to-a-secure-password-123":
     logger.warning("WARNING: Using default API key. Please change this in production!")
 
 # ============================================
