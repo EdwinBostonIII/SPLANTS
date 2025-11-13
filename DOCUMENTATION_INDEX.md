@@ -69,31 +69,6 @@ Reference: [docs_DEPLOYMENT.md](#docs_deploymentmd)
 
 ## Documentation Files
 
-### AGENTIC_WORKFLOW_GUIDE.md ⭐ NEW
-**Size:** 500+ lines (new)  
-**Purpose:** Exhaustively guided agentic workflow build for the solo business owner  
-**Reading Time:** 75-90 minutes  
-
-**Contents:**
-- Sequential ground-up implementation plan from brand prep to automation
-- Detailed “if-then” decision logic for every optional enhancement
-- Brand voice calibration worksheets and quality safeguards
-- Agentic workflow activation steps aligned with `WORKFLOW_AUTOMATION.md`
-- Brand potential scorecard with concrete, non-price metrics
-- Operating rhythms, troubleshooting, and command appendix
-
-**Best for:**
-- Business owners integrating SPLANTS personally
-- Anyone needing a guided workflow that bridges technical and creative tasks
-- Users deciding which optional integrations to enable
-
-**Read this if:**
-- You want exhaustive, step-by-step direction with built-in decision trees
-- You plan to enable webhooks, caching, or multi-model features responsibly
-- You need brand-aligned automation without relying on external consultants
-
----
-
 ### BUSINESS_STARTUP_GUIDE.md ⭐ NEW
 **Size:** 1,750+ lines (60KB)
 **Purpose:** Complete business startup roadmap integrating all best practices
