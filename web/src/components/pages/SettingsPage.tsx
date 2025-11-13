@@ -1,17 +1,70 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { CurrencyDollar, ChartBar, Warning, Bell, CheckCircle, XCircle } from '@phosphor-icons/react'
 import { Card } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { Input } from '@/components/ui/input'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { config, buildApiUrl } from '@/config'
+import { usePublicConfig } from '@/hooks/use-public-config'
 import { toast } from 'sonner'
-
-const API_BASE_URL = '/api'
-const API_KEY = 'change-this-to-a-secure-password-123' // This should come from env or user config
 
 export default function SettingsPage() {
   const monthlyBudget = 80
   const currentUsage = 42
   const usagePercent = (currentUsage / monthlyBudget) * 100
+
+  const { data: publicConfig, error: publicConfigError, loading: publicConfigLoading, refresh: refreshPublicConfig } =
+    usePublicConfig()
+  const hasClientApiKey = Boolean(config.apiKey)
+  const missingConfigItems = publicConfig
+    ? [
+        !publicConfig.api_key_configured ? 'system API key' : null,
+        !publicConfig.openai_configured ? 'OpenAI API key' : null
+      ].filter((item): item is string => Boolean(item))
+    : []
+  const featureFlags = publicConfig?.features
+  const featureStatusItems = featureFlags
+    ? [
+        {
+          key: 'redis',
+          label: 'Redis cache',
+          enabled: featureFlags.redis_enabled,
+          description: 'Cuts AI spending 30-50% by reusing responses'
+        },
+        {
+          key: 'anthropic',
+          label: 'Multi-model AI',
+          enabled: featureFlags.anthropic_enabled,
+          description: 'Combines GPT-4 with Anthropic Claude for premium quality'
+        },
+        {
+          key: 'webhooks',
+          label: 'Webhooks configured',
+          enabled: featureFlags.webhooks_configured,
+          description: 'Automation endpoints ready for Zapier, Make, or custom apps'
+        },
+        {
+          key: 'budget',
+          label: 'Monthly budget limit',
+          enabled: featureFlags.budget_enforced,
+          description: 'Stops spending once the monthly AI budget is reached'
+        },
+        {
+          key: 'daily-limit',
+          label: 'Daily request limit',
+          enabled: featureFlags.daily_limit_enforced,
+          description: 'Guards against runaway usage spikes'
+        }
+      ]
+    : []
+  const missingConfigSummary =
+    missingConfigItems.length === 0
+      ? ''
+      : missingConfigItems.length === 1
+        ? missingConfigItems[0]
+        : `${missingConfigItems.slice(0, -1).join(', ')} and ${missingConfigItems[missingConfigItems.length - 1]}`
+  const showSetupAlert = !publicConfigLoading && missingConfigItems.length > 0
+  const showConfigError = !publicConfigLoading && Boolean(publicConfigError)
 
   // Webhook settings state
   const [webhookSettings, setWebhookSettings] = useState({
@@ -22,17 +75,24 @@ export default function SettingsPage() {
   const [isSaving, setIsSaving] = useState(false)
   const [loadingSettings, setLoadingSettings] = useState(true)
 
-  // Load current webhook settings on mount
-  useEffect(() => {
-    loadWebhookSettings()
-  }, [])
+  const missingKeyWarningShown = useRef(false)
 
-  const loadWebhookSettings = async () => {
+  // Load current webhook settings on mount
+  const loadWebhookSettings = useCallback(async () => {
+    if (!config.apiKey) {
+      if (!missingKeyWarningShown.current) {
+        toast.error('API key is not configured. Set VITE_API_KEY in web/.env to manage settings.')
+        missingKeyWarningShown.current = true
+      }
+      setLoadingSettings(false)
+      return
+    }
+
     try {
       setLoadingSettings(true)
-      const response = await fetch(`${API_BASE_URL}/v1/system/settings`, {
+      const response = await fetch(buildApiUrl('/v1/system/settings'), {
         headers: {
-          'X-API-Key': API_KEY
+          'X-API-Key': config.apiKey
         }
       })
       
@@ -54,23 +114,33 @@ export default function SettingsPage() {
     } finally {
       setLoadingSettings(false)
     }
-  }
+  }, [config.apiKey])
+
+  useEffect(() => {
+    loadWebhookSettings()
+  }, [loadWebhookSettings])
 
   const saveWebhookSettings = async () => {
+    if (!config.apiKey) {
+      toast.error('API key is not configured. Set VITE_API_KEY in web/.env to save settings.')
+      return
+    }
+
     try {
       setIsSaving(true)
-      const response = await fetch(`${API_BASE_URL}/v1/system/settings`, {
+      const response = await fetch(buildApiUrl('/v1/system/settings'), {
         method: 'POST',
         headers: {
-          'X-API-Key': API_KEY,
+          'X-API-Key': config.apiKey,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(webhookSettings)
       })
 
       if (response.ok) {
-        const data = await response.json()
         toast.success('Webhook settings saved successfully!')
+        refreshPublicConfig()
+        await loadWebhookSettings()
       } else {
         throw new Error('Failed to save settings')
       }
@@ -99,6 +169,36 @@ export default function SettingsPage() {
         <h1 className="text-4xl font-bold mb-2">Budget & Settings</h1>
         <p className="text-muted-foreground">Monitor costs and manage your configuration</p>
       </div>
+
+      {showConfigError && (
+        <Alert variant="destructive" className="border border-red-200 bg-red-50">
+          <XCircle size={20} weight="fill" className="text-red-600" />
+          <AlertTitle>Unable to load setup status</AlertTitle>
+          <AlertDescription>{publicConfigError}</AlertDescription>
+        </Alert>
+      )}
+
+      {!hasClientApiKey && (
+        <Alert variant="default" className="border border-amber-200 bg-amber-50">
+          <Warning size={20} weight="fill" className="text-amber-600" />
+          <AlertTitle>Dashboard API key required</AlertTitle>
+          <AlertDescription>
+            Set <code>VITE_API_KEY</code> in <code>web/.env</code> so the dashboard can authenticate requests to
+            protected endpoints.
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {showSetupAlert && (
+        <Alert variant="default" className="border border-amber-200 bg-amber-50">
+          <Warning size={20} weight="fill" className="text-amber-600" />
+          <AlertTitle>Complete your backend setup</AlertTitle>
+          <AlertDescription>
+            Configure your {missingConfigSummary} in <code>.env</code> and restart the backend. This keeps your SPLANTS
+            instance secure and able to generate content.
+          </AlertDescription>
+        </Alert>
+      )}
 
       <Card className="p-8 shadow-md">
         <div className="flex items-start justify-between mb-6">
@@ -158,6 +258,33 @@ export default function SettingsPage() {
           )}
         </div>
       </Card>
+
+      {featureStatusItems.length > 0 && (
+        <Card className="p-8 shadow-md">
+          <div className="flex items-start justify-between mb-6">
+            <div>
+              <h3 className="text-2xl font-semibold mb-1">Configuration status</h3>
+              <p className="text-muted-foreground">Optional safeguards and enhancements enabled in your backend</p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {featureStatusItems.map((item) => (
+              <div key={item.key} className="flex items-start gap-3 rounded-lg border border-border/60 p-4 bg-muted/20">
+                {item.enabled ? (
+                  <CheckCircle size={20} weight="fill" className="mt-1 text-emerald-600" />
+                ) : (
+                  <XCircle size={20} weight="fill" className="mt-1 text-muted-foreground" />
+                )}
+                <div>
+                  <p className="font-semibold">{item.label}</p>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
 
       <Card className="p-8 shadow-md">
         <div className="flex items-start justify-between mb-6">
@@ -248,16 +375,23 @@ export default function SettingsPage() {
             <div className="pt-4 flex items-center gap-3">
               <button
                 onClick={saveWebhookSettings}
-                disabled={isSaving}
+                disabled={isSaving || !hasClientApiKey}
                 className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {isSaving ? 'Saving...' : 'Save Webhook Settings'}
               </button>
               {!isSaving && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <CheckCircle size={16} weight="fill" className="text-green-600" />
-                  <span>Changes saved automatically</span>
-                </div>
+                hasClientApiKey ? (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <CheckCircle size={16} weight="fill" className="text-green-600" />
+                    <span>Changes saved automatically</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Warning size={16} weight="fill" className="text-amber-600" />
+                    <span>Add your dashboard API key to enable saving.</span>
+                  </div>
+                )
               )}
             </div>
 

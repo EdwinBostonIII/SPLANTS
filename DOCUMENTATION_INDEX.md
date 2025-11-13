@@ -10,6 +10,11 @@ This index provides navigation to all system documentation components.
 
 ## 🆕 New in v2.1.1
 
+### Agentic Workflow Master Guide ⭐ NEW
+**File:** [AGENTIC_WORKFLOW_GUIDE.md](#agentic_workflow_guidemd)
+**Purpose:** Exhaustive ground-up implementation playbook for the solo brand owner  
+**Size:** 500+ lines (new)  
+
 ### Business Startup Guide ⭐ NEW
 **File:** [BUSINESS_STARTUP_GUIDE.md](#business_startup_guidemd)
 **Purpose:** Complete roadmap for starting a custom pants business with SPLANTS
@@ -35,6 +40,9 @@ This index provides navigation to all system documentation components.
 
 ### Starting Your Business
 Reference: [BUSINESS_STARTUP_GUIDE.md](#business_startup_guidemd) (Complete entrepreneur roadmap)
+
+### Implementing Agentic Workflows
+Reference: [AGENTIC_WORKFLOW_GUIDE.md](#agentic_workflow_guidemd) (Ground-up workflow build with integration logic)
 
 ### Initial Setup
 Reference: [README.md](#readmemd) → [SETUP_GUIDE.md](#setup_guidemd) → [QUICKSTART_WINDOWS.md](#quickstart_windowsmd)
